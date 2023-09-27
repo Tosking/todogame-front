@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+}
+.header__inner {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  padding: 1rem 0;
+}
+.fa-arrow-left::before {
+  font-size: 27px;
+}

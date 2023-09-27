@@ -1,13 +1,13 @@
-//import logo from './logo.svg';
-import './App.css';
-import Register from './components/Register/Register';
+import "./App.css";
+import "./normalize.css";
+import "./null.css";
+
+import Register from "./components/Register/register/Register";
 
 function App() {
   return (
     <div className="App">
-      <div className='conteiner'>
-        <Register/>
-      </div>
+      <Register />
     </div>
   );
 }
