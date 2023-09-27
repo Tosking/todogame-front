@@ -1,0 +1,12 @@
+.register-form__input{
+    padding: 16px 22px;
+    font-size: 18px;
+    border-radius: 30px;
+}
+
+.register-form__button{
+    padding: 16px 22px;
+    font-size: 18px;
+    border-radius: 30px;
+    background-color: var(--button-color);
+}
