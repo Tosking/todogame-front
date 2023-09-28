@@ -1,4 +1,4 @@
-.register-form__input{
+.authtorization-form__input{
     padding: 20px 40px;
     font-size: 18px;
     border-radius: 30px;
@@ -10,4 +10,5 @@
     margin-top:28px;
     border-radius: 30px;
     background-color: var(--button-color);
+   
 }

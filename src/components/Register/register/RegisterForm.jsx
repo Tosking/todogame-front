@@ -6,11 +6,15 @@ class RegisterForm extends Component {
   state = {};
   render() {
     return (
-      <div className="register__form">
-        <Input className="register-form__email register-form__input" placeholder="Email"/>
-        <Input className="register-form__password register-form__input" placeholder="Create a Password"/>
-        <Input className="register-form__repeat-password register-form__input" placeholder="Repeat the Password"/>
+      <div className="authtorization-form register">
+        <Input className="register-form__login authtorization-form__input" placeholder="Login"/>
+        <Input className="register-form__email authtorization-form__input" placeholder="Email"/>
+        <Input className="register-form__password authtorization-form__input" placeholder="Create a Password"/>
+        <Input className="register-form__repeat-password authtorization-form__input" placeholder="Repeat the Password"/>
         <Button className="register-form__button">Create an account</Button>
+        <div className="route">
+          <span className="route__member">Are you a member? <a href="#" className="route__ref">Sign in now</a></span>
+        </div>
       </div>
     );
   }
