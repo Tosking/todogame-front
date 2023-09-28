@@ -1,0 +1,15 @@
+.content{
+    width: 100%;
+    flex:1 1 auto;
+
+}
+.content__inner{
+    display:flex;
+    justify-content: start;
+    width: 100%;
+    padding:0 3rem;
+}
+.type-auth{
+    color:#ffff;
+    font-size:3rem;
+}

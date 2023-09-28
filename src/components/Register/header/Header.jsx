@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <header className="header">
         <div className="header__inner container">
-          <i class="fa-solid fa-arrow-left"></i>
+          <i className="fa-solid fa-arrow-left"></i>
         </div>
       </header>
     );
