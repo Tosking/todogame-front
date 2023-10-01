@@ -1,12 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Button extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <button className={this.props.className}>{this.props.children}</button>
-        );
-    }
+const Button =(props)=> {
+     return (
+        <button className={props.className}>{props.children}</button>
+    );
 }
  
 export default Button;

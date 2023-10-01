@@ -2,7 +2,6 @@
 import React from "react";
 import "./Maincontent.css"
 const  MainContent=()=> {
-
         return (
             <div className="content">
                 <div className="content__inner container">
