@@ -4,10 +4,7 @@ import "./Register.css";
 import "../main/Authorization.css";
 import Header from "../header/Header";
 import MainContent from "../maincontent/Maincontent";
-
-class Register extends Component {
-  state = {};
-  render() {
+const Register = ()=> {
     return (
       <div className="register">
         <div className="authorization__inner container">
@@ -18,6 +15,6 @@ class Register extends Component {
       </div>
     );
   }
-}
+
 
 export default Register;

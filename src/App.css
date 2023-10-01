@@ -13,7 +13,5 @@
 .container {
   max-width: 800px;
   width: 100%;
-
-  background-color: var(--main-color);
   margin: 0 auto;
 }

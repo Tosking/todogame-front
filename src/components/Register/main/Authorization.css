@@ -2,13 +2,13 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap:60px;
+  
 }
 .authtorization-form {
   display: flex;
   flex-direction: column;
   background-color: var(--elem-outer-color);
-  padding: 56px 42px;
+  padding: 2.5rem 2rem;
   border-radius: 40px 40px 0px 0px;
   gap: 20px;
 }

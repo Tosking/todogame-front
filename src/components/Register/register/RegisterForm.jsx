@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Input from "../input/Input";
 import Button from "../input/Button";
 
-class RegisterForm extends Component {
-  state = {};
-  render() {
+const  RegisterForm  = ()=> {
+
     return (
-      <div className="authtorization-form register">
+      <form className="form form__register">
+      <div className="authtorization-form container">
         <Input className="register-form__login authtorization-form__input" placeholder="Login"/>
         <Input className="register-form__email authtorization-form__input" placeholder="Email"/>
         <Input className="register-form__password authtorization-form__input" placeholder="Create a Password"/>
@@ -16,8 +16,7 @@ class RegisterForm extends Component {
           <span className="route__member">Are you a member? <a href="#" className="route__ref">Sign in now</a></span>
         </div>
       </div>
+      </form>
     );
   }
-}
-
 export default RegisterForm;

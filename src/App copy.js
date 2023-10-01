@@ -4,7 +4,7 @@ import "../null.css";
 
 import Register from "./components/Register/register/Register";
 
-function App() {
+const App = ()=>{
   return (
     <div className="App">
       <Register />
