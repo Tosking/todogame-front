@@ -3,8 +3,30 @@
     font-size: 18px;
     border-radius: 30px;
     line-height: 20px;
+    display: block;
+    width: 100%;
 }
+.authtorization-form__label{
+    visibility: hidden;
+    position: absolute;
+    left:var(--x);
+    top:var(--y);
+   /* transform: translateY(-50%); */
+    padding: 0.5rem;
+    
+    border-radius: 10px;
+    transition: top 300ms, background-color 200ms,visibility 100ms;
 
+
+
+}
+.authtorization-form__input:focus ~label{
+    visibility: visible;
+    background-color: var(--main-color);
+    top:calc(var(--y) * -1);
+    font-size:14px;
+    
+}
 .register-form__button{
     padding: 16px 22px;
     font-size: 18px;
