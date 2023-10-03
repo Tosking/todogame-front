@@ -1,11 +1,12 @@
-
 import React from "react";
 import "../../styleComponents/Maincontent.css"
-const  MainContent=()=> {
+
+
+const  MainContent=(props)=> {
         return (
             <div className="content">
                 <div className="content__inner container">
-                    <h1 className="type-auth">Register</h1>
+									<h1 className="type-auth">{props.type_auth}</h1>
                 </div>
             </div>
         );

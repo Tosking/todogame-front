@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import RegisterForm from "./RegisterForm";
+import React from "react";
+import RegisterForm from "./SignInForm";
 import "../../../styleComponents/SignIn.css";
 import "../../../styleComponents/Authorization.css";
 import Header from "../../header/Header";
@@ -8,9 +8,9 @@ const Register = ()=> {
     return (
       <div className="login">
         <div className="authorization__inner container">
-          <Header />
-          <MainContent/>
-          <RegisterForm />
+					<Header />
+					<MainContent type_auth="Sign In"/>
+					<RegisterForm />
         </div>
       </div>
     );

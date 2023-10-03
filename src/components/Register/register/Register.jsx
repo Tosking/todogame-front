@@ -9,7 +9,7 @@ const Register = ()=> {
       <div className="register">
         <div className="authorization__inner container">
           <Header />
-          <MainContent/>
+          <MainContent type_auth="Register"/>
           <RegisterForm />
         </div>
       </div>
