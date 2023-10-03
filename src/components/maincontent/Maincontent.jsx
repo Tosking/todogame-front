@@ -1,6 +1,6 @@
 
 import React from "react";
-import "./Maincontent.css"
+import "../../styleComponents/Maincontent.css"
 const  MainContent=()=> {
         return (
             <div className="content">
