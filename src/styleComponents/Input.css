@@ -27,8 +27,9 @@
     font-size:14px;
     
 }
-.register-form__button{
-    padding: 16px 22px;
+.authtorization-form__button{
+    padding: 20px 40px;
+    margin-top:20px;
     font-size: 18px;
     border-radius: 30px;
     background-color: var(--button-color);

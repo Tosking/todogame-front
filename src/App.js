@@ -1,15 +1,20 @@
 import "./App.css";
 import "./normalize.css";
 import "./null.css";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Authorization from "./components/authtorization/Authtorization";
 
-import Register from "./components/Register/register/Register";
-import SignIn from './components/Register/signIn/SignIn';
 
 function App() {
   return (
-    <div className="App">
-      <SignIn />
-    </div>
+    <BrowserRouter>
+    <Routes>
+          {/* <div className="App"> */}
+            <Route path = "*" element = {<Authorization auth ="signin"/>}></Route>
+            <Route path = "register" element = {<Authorization auth ="register"/>}></Route>
+          {/* </div> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 

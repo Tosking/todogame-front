@@ -9,9 +9,6 @@
   min-height: 100vh;
 }
 
-
-
-
 .route{
   font-size: 1.3rem;
   color:#ffff;
@@ -24,13 +21,4 @@
 .route__ref{
   color:#222122;
   
-}
-
-.login-form__forget{
-	display: flex;
-	width: 100%;
-	justify-content: end;
-	font-size: 18px;
-	line-height: 20px;
-	margin-bottom: 15px;
 }

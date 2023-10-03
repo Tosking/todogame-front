@@ -1,3 +1,10 @@
+.authorization{
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .authorization__inner {
   display: flex;
   justify-content: space-between;
@@ -12,6 +19,14 @@
 
   gap: 20px;
 }
+.login-form__forget{
+	display: flex;
+	width: 100%;
+	justify-content: end;
+	font-size: 18px;
+	line-height: 20px;
+	margin-bottom: 15px;
+}
 .form{
   background-color: var(--elem-outer-color);
   border-radius: 40px 40px 0px 0px;
@@ -21,6 +36,20 @@
   --x:25px;
   --y:12px;
 }
+.route{
+  font-size: 1.3rem;
+  color:#ffff;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+ 
+  margin-top:36px;
+}
+.route__ref{
+  color:#222122;
+}
+
+
 @media(max-width:576px) 
 {
   .container{
