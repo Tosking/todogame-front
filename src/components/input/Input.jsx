@@ -1,7 +1,7 @@
 import React  from "react";
 import '../../styleComponents/Input.css'
 
-const  Input=(props)=> {
+const  Input = (props)=> {
   return (
       <div className="form-group">
       <input type="text" className={props.className} placeholder={props.placeholder}/>
