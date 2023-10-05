@@ -7,14 +7,15 @@ import Authorization from "./components/authtorization/Authtorization";
 
 function App() {
   return (
-    <BrowserRouter>
-    <Routes>
-          {/* <div className="App"> */}
-            <Route path = "*" element = {<Authorization auth ="signin"/>}></Route>
-            <Route path = "register" element = {<Authorization auth ="register"/>}></Route>
-          {/* </div> */}
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+      <Routes>
+              <Route path = "*" element = {<Authorization auth ="signin"/>}></Route>
+              <Route path = "register" element = {<Authorization auth ="register"/>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+
   );
 }
 

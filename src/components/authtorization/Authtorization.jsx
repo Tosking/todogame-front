@@ -10,7 +10,7 @@ import RegisterForm from "../Register/RegisterForm";
 const Authorization = (props)=> {
 
     return (
-      <div className= "App">
+      // <div className= "App">
       <div className={"authorization " + props.auth}>
         <div className="authorization__inner container">
           <Header />
@@ -19,7 +19,7 @@ const Authorization = (props)=> {
       
         </div>
       </div>
-      </div>
+      // </div>
     );
   }
 

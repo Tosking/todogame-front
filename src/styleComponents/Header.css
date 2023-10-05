@@ -3,11 +3,12 @@
 }
 .header__inner {
   display: flex;
-  justify-content: start;
   width: 100%;
   padding: 1rem 1.6rem;
 }
-
+.header__inner svg{
+  cursor: pointer;
+}
 .bm-burger-button {
   position: relative;
   width: 36px;
