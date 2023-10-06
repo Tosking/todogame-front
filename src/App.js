@@ -1,20 +1,23 @@
+import { useState} from "react";
+import { BrowserRouter, Route,Routes } from 'react-router-dom';
+import Authorization from "./pages/Authtorization/Authtorization";
 import "./App.css";
 import "./normalize.css";
 import "./null.css";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Authorization from "./components/authtorization/Authtorization";
+import Main from "./pages/Main/Main";
 
+const  App = ()=> {
 
-function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
       <Routes>
-              <Route path = "*" element = {<Authorization auth ="signin"/>}></Route>
-              <Route path = "register" element = {<Authorization auth ="register"/>}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+        <Route path = "/register" element = {<Authorization   auth ="register"/>}></Route>
+        <Route path = "/login" element = {<Authorization  auth ="signin"/>}></Route>
+        <Route path = "/" element = {<Authorization  auth ="signin"/>}></Route>
+        <Route path = "/main" element = {<Main/>}></Route>
+
+
+      </Routes>
+
 
   );
 }

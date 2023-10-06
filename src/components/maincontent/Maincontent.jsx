@@ -2,7 +2,7 @@ import React from "react";
 import "../../styleComponents/Maincontent.css"
 
 
-const  MainContent=(props)=> {
+const MainContent=(props)=> {
         return (
             <div className="content">
                 <div className="content__inner container">
