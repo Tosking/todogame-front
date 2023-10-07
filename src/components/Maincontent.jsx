@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styleComponents/Maincontent.css"
+import "../styleComponents/Maincontent.css"
 
 
 const MainContent=(props)=> {

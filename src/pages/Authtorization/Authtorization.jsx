@@ -1,8 +1,8 @@
 import React  from "react";
 
 import "../../styleComponents/Authtorization.css";
-import Header from "../../components/header/Header";
-import MainContent from "../../components/maincontent/Maincontent";
+import Header from "../../components/Header";
+import MainContent from "../../components/Maincontent";
 import SignInForm from "./SignInForm";
 import RegisterForm from "./RegisterForm";
 

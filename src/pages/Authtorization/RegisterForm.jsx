@@ -1,6 +1,6 @@
 import React, { useState }  from "react";
-import Input from "../../components/input/Input";
-import Button from "../../components/button/Button";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 
 

@@ -1,11 +1,11 @@
 import React from "react";
-import "../../styleComponents/Header.css";
+import "../styleComponents/Header.css";
 import { slide as Menu } from 'react-burger-menu'
 import { Link,Navigate } from "react-router-dom";
 import Dropdown from 'react-dropdown';
 import Select from "react-select";
 import 'react-dropdown/style.css';
-import arrowBurger from "../../images/arrowBurger.svg";
+import arrowBurger from "../images/arrowBurger.svg";
 
 const options = [
   {value: <Link to="/all">All</Link>, label:"All"},
