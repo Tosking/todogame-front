@@ -1,0 +1,12 @@
+.main-page{
+  min-height: 100vh;
+}
+.main-page__inner{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main-page-content
+.content__inner{
+  padding:0 23px !important;
+}

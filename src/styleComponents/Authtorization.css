@@ -1,5 +1,4 @@
 .authorization{
-  background-color: var(--main-color);
   display: flex;
   justify-content: center;
   min-height: 100vh;

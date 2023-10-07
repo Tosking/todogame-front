@@ -1,8 +1,8 @@
 .content{
-    width: 100%;
     flex:1 1 auto;
 
 }
+
 .content__inner{
     display:flex;
     width: 100%;

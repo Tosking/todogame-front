@@ -1,22 +1,25 @@
 import { useState} from "react";
-import { BrowserRouter, Route,Routes } from 'react-router-dom';
-import Authorization from "./pages/Authtorization/Authtorization";
-import "./App.css";
-import "./normalize.css";
-import "./null.css";
-import Main from "./pages/Main/Main";
+import { BrowserRouter, Route,Routes,useLocation } from 'react-router-dom';
+import Main from "pages/Main";
+import Login from "pages/Login";
+import Register from "pages/Register";
+import { AnimatePresence } from "framer-motion";
+import "App.css";
+import "normalize.css";
+import "null.css";
+
 
 const  App = ()=> {
-
-  return (
-      <Routes>
-        <Route path = "/register" element = {<Authorization   auth ="register"/>}></Route>
-        <Route path = "/login" element = {<Authorization  auth ="signin"/>}></Route>
-        <Route path = "/" element = {<Authorization  auth ="signin"/>}></Route>
+  const location = useLocation();
+  return (  
+    <AnimatePresence>
+      <Routes key = {location.pathname} location={location}>
+        <Route path = "/register" element = {<Register/>}></Route>
+        <Route path = "/login" element = {<Login />}></Route>
+        <Route path = "/" element = {<Main/>}></Route>
         <Route path = "/main" element = {<Main/>}></Route>
-
-
       </Routes>
+      </AnimatePresence>
 
 
   );
