@@ -4,6 +4,7 @@ import "styleComponents/Main.css"
 import MainContent from 'components/Maincontent';
 import AnimatedPage from 'components/Animated';
 import CategoryButton from 'components/CategoryButton';
+import Task from 'components/Task';
 import 'styleComponents/MainPage.css'
 
 
@@ -22,6 +23,14 @@ const Main = () => {
               <div className="categories__inner">
                 <CategoryButton inner="kek" header="lol"/>
               </div>
+            </div>
+            <div className="tasks">
+              <div className='section-name'>Tasks</div>
+              <Task>Mem</Task>
+              <Task>Ya</Task>
+              <Task>Zaebalsya</Task>
+              <Task>Test</Task>
+              <Task>Кто прочитал тот лох</Task>
             </div>
             </MainContent>
           
