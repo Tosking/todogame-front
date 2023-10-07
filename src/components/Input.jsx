@@ -1,11 +1,11 @@
 import React  from "react";
-import '../styleComponents/Input.css'
+import 'styleComponents/Input.css'
 
-const  Input = (props)=> {
+const  Input = ({rootClassName,inputClassName,placeholder,onChange})=> {
   return (
-      <div className="form-group">
-      <input type="text" className={props.className} placeholder={props.placeholder} onChange={e=>props.setProperty(e.target.value)}/>
-      <label className="authtorization-form__label"  htmlFor={props.className}>{props.placeholder}</label>
+      <div className={rootClassName}>
+      <input type="text" className={inputClassName} placeholder={placeholder} onChange={e=>onChange(e.target.value)}/>
+      <label className="authtorization-form__label"  htmlFor={inputClassName}>{placeholder}</label>
       </div>
   
   );
