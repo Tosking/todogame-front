@@ -16,7 +16,7 @@ const Login = () => {
     <div className="App">
 
     <div className="authorization signin" >
-      <AnimatedPage className="authorization__inner container">
+      <div className="authorization__inner container">
         
         <Header/>
         <MainContent>
@@ -41,7 +41,7 @@ const Login = () => {
             </div>
       </Form>
 
-      </AnimatedPage>
+      </div>
     </div>
      </div>
    

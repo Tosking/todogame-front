@@ -1,4 +1,4 @@
-import { useState} from "react";
+import React, { useState} from "react";
 import { BrowserRouter, Route,Routes,useLocation } from 'react-router-dom';
 import Main from "./pages/Main";
 import Login from "./pages/Login";
@@ -12,14 +12,14 @@ import "null.css";
 const  App = ()=> {
   const location = useLocation();
   return (  
-    <AnimatePresence>
-      <Routes key = {location.pathname} location={location}>
+    // <AnimatePresence>
+      <Routes>
         <Route path = "/register" element = {<Register/>}></Route>
         <Route path = "/login" element = {<Login />}></Route>
         <Route path = "/" element = {<Main/>}></Route>
         <Route path = "/main" element = {<Main/>}></Route>
       </Routes>
-      </AnimatePresence>
+      //  </AnimatePresence>
 
 
   );

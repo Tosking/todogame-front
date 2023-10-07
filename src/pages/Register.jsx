@@ -19,8 +19,7 @@ const Register = () => {
    
     <div className="App">
     <div className="authorization signin" >
-      <AnimatedPage className="authorization__inner container">
-        
+      <div className="authorization__inner container">
         <Header/>
         <MainContent>
           <h1 className="type-auth">{"Register"}</h1>
@@ -39,7 +38,7 @@ const Register = () => {
             </div>
         </Form>
 
-      </AnimatedPage>
+      </div>
     </div>
      </div>
      
