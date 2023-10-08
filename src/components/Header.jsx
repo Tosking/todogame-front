@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import 'react-dropdown/style.css';
 import arrowBurger from "images/arrowBurger.svg";
+import signin from "images/signin.svg";
+
 
 const options = [
   {value: <Link to="/all">All</Link>, label:"All"},
@@ -22,8 +24,16 @@ const Header = ({burger,to})=>{
            <Link to="/account">Account</Link>
            <Link to={"/calendar"}>Calendar</Link>
            <Link to={"/settings"}>Settings</Link>
-           <Select zisSearchable = {false }  value={"Folders"} options={options} placeholder="Folders">
-           </Select>
+           <div style={{flex:"1 1 auto"}}>
+           <Select  isSearchable = {false }  value={"Folders"} options={options} placeholder="Folders"/>
+           </div>
+           
+           <div className="bm-item bm-item__signin">
+            <Link to ="/login" className="signin__inner">
+              <img src={signin} alt="#" />
+              <span style={{fontSize:"24px"}}>Sign In</span>
+            </Link>
+           </div>
           </Menu>:
           <Link to = {to??"/main"}>
              <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,16 +1,17 @@
 import React from 'react'
-import '../'
+import check from "images/check.svg";
+import { Checkbox } from 'pretty-checkbox-react';
+import "pretty-checkbox/dist/pretty-checkbox.css"
 
-function Task(props) {
+
+const Task = ({children})=> {
     return ( 
         <div className="task">
             <div className="task__inner">
-                <svg height="26" width="26" className="task__circle"> 
-                    <circle cx="13" cy="13" r="12" stroke="gray" fill-opacity="0%"
-                    stroke-width="2" /> 
-                </svg> 
+            <Checkbox  style={{fontSize:"30px",marginRight:"10px"}} 
+            shape="round" color="success" animation="pulse"/>
                 <div className="task__content">
-                    {props.children}
+                    {children}
                 </div>
             </div>
         </div>

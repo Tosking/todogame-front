@@ -2,11 +2,10 @@ import React from 'react'
 import Header from 'components/Header';
 import "styleComponents/Main.css"
 import MainContent from 'components/Maincontent';
-import AnimatedPage from 'components/Animated';
-import CategoryButton from 'components/CategoryButton';
+
 import Task from 'components/Task';
 import 'styleComponents/MainPage.css'
-
+import Button from 'components/Button';
 
 
 const Main = () => {
@@ -21,7 +20,15 @@ const Main = () => {
             <div className='categories'>
               <div className='section-name'>Categories</div>
               <div className="categories__inner">
-                <CategoryButton inner="kek" header="lol"/>
+                <Button buttonClassName={"category__button"}>
+                    <div className="category-button__header">
+                        {"lol"}
+                    </div>
+                    <div className="category-button__inner">
+                        {"kek"}
+                    </div>
+                </Button>
+      
               </div>
             </div>
             <div className="tasks">

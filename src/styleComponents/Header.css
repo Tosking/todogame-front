@@ -51,7 +51,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* General sidebar styles */
 .bm-menu {
   background: #373a47;
-  padding: 2.5em 1.5em 0;
+  padding: 66px 23px 0 23px;
   font-size: 1.15em;
   border-radius: 0px 60px 0px 0px;
 }
@@ -63,8 +63,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Wrapper for item list */
 .bm-item-list {
+  display: flex;
+  flex-direction: column;
   color: #b8b7ad;
-  padding: 0.8em;
+  padding: 0.8em 0.8em 0 0.8em;
 }
 
 /* Individual item */
@@ -77,4 +79,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0.3);
   top:0;
   left:0;
+}
+.signin__inner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+  cursor: pointer;
+  padding:11px 0;
 }

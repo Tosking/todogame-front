@@ -34,7 +34,7 @@ const Login = () => {
               <div className="login-form__forget">
                 <a href="#">Forget Password?</a>
               </div>
-              <Button className="authtorization-form__button">Sign In</Button>
+              <Button buttonClassName="authtorization-form__button">Sign In</Button>
               <div className="route">
                 <span className="route__member">Not a member? <Link to="/register" className="route__ref">Register now</Link></span>
               </div>
