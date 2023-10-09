@@ -1,15 +1,23 @@
 :root {
-  --main-color: #7c7c7c;
-  --elem-outer-color: #a3a3a3;
-  --button-color: #c0c0c0;
+  --main-color: #E839AD;
+  --main-color-2:#302DD7;
+  --elem-outer-color:#706EDA;
+  --rote-ref:#550862;
+  --button-color: #9B99E5;
   --task-color:#444444;
+  --input-color:#B7B5B5;
+  
+  
+
 }
 
 .App {
   text-align: center;
   height: 100vh;
   width: 100%;
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
+  background: linear-gradient(var(--main-color),var(--main-color-2));
+  
 }
 
 .container {

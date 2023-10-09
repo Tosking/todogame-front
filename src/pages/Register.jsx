@@ -27,10 +27,10 @@ const Register = () => {
 
         <Form className="form form__register">
             <div className="authtorization-form container">
-            <Input  rootClassName = "form-group" inputClassName="authtorization-form-signup__login authtorization-form__input"  onChange ={setLogin} placeholder="Login"/>
-            <Input  rootClassName = "form-group" inputClassName="authtorization-form-signup__email authtorization-form__input"  onChange = {setEmail} placeholder="Email" />
-            <Input  rootClassName = "form-group" inputClassName="authtorization-form-signup__password authtorization-form__input" onChange ={setPassword} placeholder="Create a Password"/>
-            <Input  rootClassName = "form-group" inputClassName="authtorization-form-signup__repeat-password authtorization-form__input" onChange = {setRepeatPass} placeholder="Repeat the Password"/>
+            <Input typeInput="text"  rootClassName = "form-group" inputClassName="authtorization-form-signup__login authtorization-form__input"  onChange ={setLogin} placeholder="Login"/>
+            <Input typeInput = "text" rootClassName = "form-group" inputClassName="authtorization-form-signup__email authtorization-form__input"  onChange = {setEmail} placeholder="Email" />
+            <Input showHidden ={true} typeInput = "password" rootClassName = "form-group" inputClassName="authtorization-form-signup__password authtorization-form__input" onChange ={setPassword} placeholder="Create a Password"/>
+            <Input typeInput = "text" rootClassName = "form-group" inputClassName="authtorization-form-signup__repeat-password authtorization-form__input" onChange = {setRepeatPass} placeholder="Repeat the Password"/>
             <Button buttonClassName="authtorization-form__button">Create an account</Button>
             <div className="route">
                 <span className="route__member">Are you a member? <Link to ="/login" className="route__ref">Sign in now</Link></span>

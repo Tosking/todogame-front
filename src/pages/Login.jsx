@@ -7,6 +7,8 @@ import MainContent from 'components/Maincontent';
 import { Link } from 'react-router-dom';
 import AnimatedPage from 'components/Animated';
 import "styleComponents/Authtorization.css";
+import google from "images/google.svg"
+
 const Login = () => {
 
   const [password,setPassword] = useState('');
@@ -25,10 +27,15 @@ const Login = () => {
 
         <Form className="form form__login">
             <div className="authtorization-form container">
-              <Input rootClassName = "form-group" 
+              <Button buttonClassName="authtorization-form__button button-google">
+                <img src={google} alt="#" />
+                <span>Continue with Google</span>
+              </Button>
+
+              <Input  typeInput = "text" rootClassName = "form-group" 
               inputClassName="authtorization-form__login authtorization-form__input" onChange = {setLogin} placeholder="Login"/>
               
-              <Input rootClassName = "form-group" 
+              <Input showHidden ={true} typeInput = "password" rootClassName = "form-group" 
               inputClassName="authtorization-form__password authtorization-form__input" onChange = {setPassword}  placeholder="Password"/>
               
               <div className="login-form__forget">
