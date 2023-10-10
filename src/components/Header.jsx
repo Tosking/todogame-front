@@ -21,6 +21,7 @@ const Header = ({burger,to})=>{
         <div className="header__inner container">
           {burger?
           <Menu  customCrossIcon={<img src={arrowBurger}/>} >
+					 <Link to="/main">Home</Link>
            <Link to="/account">Account</Link>
            <Link to={"/calendar"}>Calendar</Link>
            <Link to={"/settings"}>Settings</Link>
