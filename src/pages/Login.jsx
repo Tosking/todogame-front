@@ -20,7 +20,7 @@ const Login = () => {
     <div className="authorization signin" >
       <div className="authorization__inner container">
         
-        <Header/>
+        <Header />
         <MainContent>
           <h1 className="type-auth">{"Sign In"}</h1>
         </MainContent>

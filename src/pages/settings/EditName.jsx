@@ -4,7 +4,7 @@ import Header from 'components/Header';
 const EditName = () => {
 	return (
 		<div className='App'>
-			<Header />
+			<Header to={"/settings"}/>
 			Edit Name
 		</div>
 	);

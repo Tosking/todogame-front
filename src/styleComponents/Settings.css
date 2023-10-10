@@ -1,3 +1,51 @@
-.content{
-	flex-direction: column;
+/* Main Settings */
+.settings-cell{
+	display: flex;
+	margin-top: 50px;
+	justify-content: space-between;
+}
+
+.settings-content .content__inner{
+	padding: 0 23px;
+}
+
+
+/* Choose Theme */
+.theme-content{
+	display: flex;
+	margin-top: 50px;
+	justify-content: space-between;
+}
+
+.settings-theme-content{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
+}
+
+.settings-theme-name{
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	color: #FFFFFF;
+}
+
+.settings-theme-swtich{
+	padding-top: 7px;
+	font-size: 24px;
+}
+
+.settings-theme-color{
+	padding-top: 29px;
+}
+
+.settings-theme-nColor{
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 13px;
+	color: #FFFFFF;
 }

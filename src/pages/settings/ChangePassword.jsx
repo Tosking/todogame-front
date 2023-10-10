@@ -4,7 +4,7 @@ import Header from 'components/Header';
 const ChangePassword = () => {
 	return (
 		<div className='App'>
-			<Header />
+			<Header to={"/settings"}/>
 			Change Password
 		</div>
 	);

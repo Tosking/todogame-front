@@ -4,7 +4,7 @@ import Header from 'components/Header';
 const ChangeEmail = () => {
 	return (
 		<div className="App">
-			<Header />
+			<Header to={"/settings"}/>
 			Change Email
 		</div>
 	);

@@ -4,7 +4,7 @@ import "styleComponents/Maincontent.css"
 
 
 const MainContent=({children,contentClassName})=> {
-        return (
+	return (
             <div className={"content " + (!!contentClassName ? contentClassName+"-content":"")   }>
                 <div className="content__inner container">
 					{children}
