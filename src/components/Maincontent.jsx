@@ -1,11 +1,15 @@
 import React from "react";
-import "styleComponents/Maincontent.css"
 
 
 
-const MainContent=({children,contentClassName})=> {
+
+const MainContent=({children,contentClassName,addTask})=> {
 	return (
             <div className={"content " + (!!contentClassName ? contentClassName+"-content":"")   }>
+                {addTask?<button href="#" className="content-create-task">
+                    <span></span>
+                    <span></span>
+                    </button>:""}
                 <div className="content__inner container">
 					{children}
                 </div>

@@ -22,7 +22,7 @@ const Login = () => {
         
         <Header />
         <MainContent>
-          <h1 className="type-auth">{"Sign In"}</h1>
+          <h1 className="content-header">{"Sign In"}</h1>
         </MainContent>
 
         <Form className="form form__login">

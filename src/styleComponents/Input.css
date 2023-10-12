@@ -45,7 +45,11 @@
     line-height: 28px;
     border-radius: 30px;
     background-color: var(--button-color);
+    transition: 0.4s background-color;
    
+}
+.authtorization-form__button:hover{
+    background-color:var(--button-hover);
 }
 .button-google{
     display: flex;

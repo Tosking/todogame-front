@@ -22,7 +22,7 @@ const Register = () => {
       <div className="authorization__inner container">
         <Header/>
         <MainContent>
-          <h1 className="type-auth">{"Register"}</h1>
+          <h1 className="content-header">{"Register"}</h1>
         </MainContent>
 
         <Form className="form form__register">

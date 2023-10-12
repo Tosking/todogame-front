@@ -15,8 +15,9 @@ const Main = () => {
       <div className="main-page">
         <div className={"main-page__inner container"}>
           <Header burger={true}/>
-          <MainContent contentClassName={"main-page"}>
-            <h1 className='type-auth'>Hello, sign in or register!</h1>
+          <MainContent contentClassName={"main-page"} addTask={true}>
+            
+            <h1 className='content-header content-header_gradient'>Hello, sign in or register!</h1>
             <div className='categories'>
               <div className='section-name'>Categories</div>
               <div className="categories__inner">

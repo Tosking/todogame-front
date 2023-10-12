@@ -1,10 +1,14 @@
 .main-page{
   min-height: 100vh;
+  background-color: #2E2E2E;
 }
 .main-page__inner{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+.main-page-content{
+  position: relative;
 }
 .main-page-content
 .content__inner{

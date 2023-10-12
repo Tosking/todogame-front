@@ -1,5 +1,6 @@
 .authorization{
   display: flex;
+  background: linear-gradient(var(--main-color),var(--main-color-2));
   justify-content: center;
   min-height: 100vh;
 }
