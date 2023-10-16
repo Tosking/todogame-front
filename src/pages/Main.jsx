@@ -1,20 +1,30 @@
 import React from 'react'
 import Header from 'components/Header';
-import "styleComponents/Main.css"
 import MainContent from 'components/Maincontent';
-
-import Task from 'components/Task';
-import 'styleComponents/MainPage.css'
 import Button from 'components/Button';
+import Task from 'components/Task';
+
+import 'styleComponents/MainPage.css'
+import "styleComponents/Main.css"
+
+import account from "images/account.svg";
+import search  from "images/search.svg";
+
 
 
 const Main = () => {
+
   return (
    
     <div className="App">
       <div className="main-page">
         <div className={"main-page__inner container"}>
-          <Header burger={true}/>
+          <Header burger={true}>
+              <div className="header-inner__profile">
+                <Button buttonClassName={"profile__search"}><img src={search}/></Button>
+                <Button buttonClassName={"profile__account"}><img src={account}/></Button>
+              </div>
+          </Header>
           <MainContent contentClassName={"main-page"} addTask={true}>
             
             <h1 className='content-header content-header_gradient'>Hello, sign in or register!</h1>

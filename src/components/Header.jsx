@@ -6,21 +6,23 @@ import Select from "react-select";
 import 'react-dropdown/style.css';
 import arrowBurger from "images/arrowBurger.svg";
 import signin from "images/signin.svg";
+import headericon from "images/headericon.svg";
+
 
 
 const options = [
-  {value: <Link to="/all">All</Link>, label:"All"},
-  {value: <Link to = "/today">Today</Link>, label:"Today"},
-  {value: <Link to = "/tomorrow">Tomorrow</Link>, label:"Tomorrow"},
-  {value: <Link to = "/sevendays">7 days</Link>, label:"7 days"}
+  {value: "All", label: <Link to="/all">All</Link>} ,
+  {value:"Today" , label: <Link to = "/today">Today</Link>},
+  {value: "Tomorrow", label: <Link to = "/tomorrow">Tomorrow</Link> },
+  {value:"7 days" , label: <Link to = "/sevendays">7 days</Link> }
 ]
 
-const Header = ({burger,to})=>{
+const Header = ({burger,to,children})=>{
     return (
       <header className="header">
         <div className="header__inner container">
           {burger?
-          <Menu  customCrossIcon={<img src={arrowBurger}/>} >
+          <Menu  customBurgerIcon={<img src = {headericon}/>} customCrossIcon={<img src={arrowBurger}/>} >
 					 <Link to="/main">Home</Link>
            <Link to="/account">Account</Link>
            <Link to={"/calendar"}>Calendar</Link>
@@ -44,7 +46,9 @@ const Header = ({burger,to})=>{
               6.3934C12.0208 5.80761 11.0711 5.80761 10.4853 6.3934L0.939339 15.9393ZM32 15.5L2 15.5V18.5L32 18.5V15.5Z" fill="white"/>
             </svg>
           </Link>
+         
           }
+          {children ?? ""}
         </div>
       </header>
     );
