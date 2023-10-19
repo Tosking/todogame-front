@@ -1,5 +1,4 @@
 import React from 'react'
-import check from "images/check.svg";
 import { Checkbox } from 'pretty-checkbox-react';
 import "pretty-checkbox/dist/pretty-checkbox.css"
 

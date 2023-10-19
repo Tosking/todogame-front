@@ -1,12 +1,7 @@
-import React, { useState} from "react";
-import { BrowserRouter, Route,Routes,useLocation } from 'react-router-dom';
+import React from "react";
+import {Route,Routes} from 'react-router-dom';
 import Main from "./pages/Main";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import { AnimatePresence } from "framer-motion";
-import "App.css";
-import "normalize.css";
-import "null.css";
+
 import Settings from "pages/settings/Settings";
 import EditName from "pages/settings/EditName";
 import ChangePassword from "pages/settings/ChangePassword";
@@ -15,10 +10,12 @@ import ChooseTheme from "pages/settings/ChooseTheme";
 import AuthRootComponent from "components/auth";
 import PrivateRoute from "utils/router/privateRouter";
 
+import "App.css";
+import "normalize.css";
+import "null.css";
 
 const  App = ()=> {
   return (  
-    // <AnimatePresence>
       <Routes>
         <Route path = "/register" element = {<AuthRootComponent/>}></Route>
         <Route path = "/login" element = {<AuthRootComponent/>}></Route>
@@ -34,7 +31,7 @@ const  App = ()=> {
 
 				
       </Routes>
-      //  </AnimatePresence>      
+ 
   );
 }
 //TODO: Решить с приватными роутами, какие должны быть приватными, какие нет
