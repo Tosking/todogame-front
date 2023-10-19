@@ -50,8 +50,7 @@ const Main = () => {
               <Task>Test</Task>
               <Task>Кто прочитал тот лох</Task>
             </div>
-            </MainContent>
-          
+            </MainContent>       
         </div>
      
       </div>
