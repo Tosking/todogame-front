@@ -17,10 +17,10 @@ import "null.css";
 const  App = ()=> {
   return (  
       <Routes>
-        <Route path = "/register" element = {<AuthRootComponent/>}></Route>
-        <Route path = "/login" element = {<AuthRootComponent/>}></Route>
-        <Route path = "/" element = {<Main/>}></Route>
+        <Route path = "/auth/register" element = {<AuthRootComponent/>}></Route>
+        <Route path = "/auth/login" element = {<AuthRootComponent/>}></Route>
         <Route  element = {<PrivateRoute/>}>
+           <Route path = "/" element = {<Main/>}></Route>
             <Route path = "/main" element = {<Main/>}></Route>
             <Route path = "/settings" element = {<Settings/>}></Route>
             <Route path = "/settingsEditName" element = {<EditName/>}></Route>
@@ -33,6 +33,7 @@ const  App = ()=> {
       </Routes>
  
   );
+  
 }
 //TODO: Решить с приватными роутами, какие должны быть приватными, какие нет
 

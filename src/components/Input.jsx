@@ -3,7 +3,8 @@ import 'styleComponents/Input.css'
 import closeeye from "images/closeeye.svg"
 import eye from "images/eye.svg"
 
-const  Input = ({rootClassName,inputClassName,placeholder,onChange,typeInput,showHidden})=> {
+const  Input = ({rootClassName,inputClassName,placeholder,typeInput,showHidden,validation,value})=> {
+  
   const [type,setType] = useState('password');
   const [toggleIcon,setToggleIcon] = useState(closeeye);
   
@@ -20,7 +21,7 @@ const  Input = ({rootClassName,inputClassName,placeholder,onChange,typeInput,sho
 
   return (
       <div className={rootClassName}>
-      <input type={showHidden?type:typeInput} className={inputClassName} placeholder={placeholder} onChange={e=>onChange(e.target.value)}/>
+      <input value={value} {...validation} type={showHidden?type:typeInput} className={inputClassName} placeholder={placeholder} />
         {showHidden ?<span className="input__handlepassword" onClick={toggleIconPass}><img src={toggleIcon} alt="" /></span>:""} 
       <label className="authtorization-form__label"  htmlFor={inputClassName}>{placeholder}</label>
       </div>

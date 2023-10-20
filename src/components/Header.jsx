@@ -32,7 +32,7 @@ const Header = ({burger,to,children})=>{
            </div>
            
            <div className="bm-item bm-item__signin">
-            <Link to ="/login" className="signin__inner">
+            <Link to ="/auth/login" className="signin__inner">
               <img src={signin} alt="#" />
               <span style={{fontSize:"24px"}}>Sign In</span>
             </Link>

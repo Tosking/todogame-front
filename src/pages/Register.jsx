@@ -9,7 +9,8 @@ import "styleComponents/Authtorization.css";
 
 
 
-const Register = ({setEmail,setPassword,setLogin,setRepeatPass,sendData}) => {
+const Register = ({register,sendData,errors}) => {
+  console.log(errors);
   return (
    
     <div className="App">
@@ -20,13 +21,52 @@ const Register = ({setEmail,setPassword,setLogin,setRepeatPass,sendData}) => {
           <h1 className="content-header">{"Register"}</h1>
         </MainContent>
 
-        <Form className="form form__register">
+        <Form formClassName="form__register" onSubmit={sendData}>
             <div className="authtorization-form container">
-            <Input typeInput="text"  rootClassName = "form-group" inputClassName="authtorization-form-signup__login authtorization-form__input"  onChange ={setLogin} placeholder="Login"/>
-            <Input typeInput = "text" rootClassName = "form-group" inputClassName="authtorization-form-signup__email authtorization-form__input"  onChange = {setEmail} placeholder="Email" />
-            <Input showHidden ={true} typeInput = "password" rootClassName = "form-group" inputClassName="authtorization-form-signup__password authtorization-form__input" onChange ={setPassword} placeholder="Create a Password"/>
-            <Input typeInput = "text" rootClassName = "form-group" inputClassName="authtorization-form-signup__repeat-password authtorization-form__input" onChange = {setRepeatPass} placeholder="Repeat the Password"/>
-            <Button buttonClassName="authtorization-form__button" onClick={sendData}>Create an account</Button>
+            <Input 
+            validation = {{ ...register('login',{
+            required:true
+            })}}
+             typeInput="text" 
+             rootClassName = "form-group" 
+             inputClassName="authtorization-form-signup__login authtorization-form__input"  
+           
+             placeholder="Login"/>
+              {errors.login && <h1>This field is required</h1>}
+            <Input 
+            validation = {{ ...register('email',{
+            required:true
+            })}}
+            typeInput = "text" 
+            rootClassName = "form-group" 
+            inputClassName="authtorization-form-signup__email authtorization-form__input"  
+          
+            placeholder="Email" />
+            {errors.email && <h1>This field is required</h1>} 
+            <Input 
+            validation = {{ ...register('password',{
+              required:true
+            })}}
+            showHidden ={true} 
+            typeInput = "password" 
+            rootClassName = "form-group" 
+            inputClassName="authtorization-form-signup__password authtorization-form__input" 
+          
+            placeholder="Create a Password"/>
+            {errors.password && <h1>This field is required</h1>} 
+
+            <Input 
+            validation = {{ ...register('repeatPassword',{
+              required:true
+            })}}
+            typeInput = "text" 
+            rootClassName = "form-group" 
+            inputClassName="authtorization-form-signup__repeat-password authtorization-form__input" 
+     
+            placeholder="Repeat the Password"/>
+            {errors.repeatPassword && <h1>This field is required</h1>} 
+
+            <Button typeBtn = {"submit"}  buttonClassName="authtorization-form__button">Create an account</Button>
             <div className="route">
                 <span className="route__member">Are you a member? <Link to ="/login" className="route__ref">Sign in now</Link></span>
             </div>

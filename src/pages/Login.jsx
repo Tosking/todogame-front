@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 import "styleComponents/Authtorization.css";
 import google from "images/google.svg"
 
-const Login = ({setLogin,setPassword,sendData}) => {
+const Login = ({login,sendData,errors}) => {
+  console.log(errors);
   return (
     
     <div className="App">
@@ -21,7 +22,7 @@ const Login = ({setLogin,setPassword,sendData}) => {
           <h1 className="content-header">{"Sign In"}</h1>
         </MainContent>
 
-        <Form className="form form__login">
+        <Form className="form form__login" onSubmit={sendData}>
             <div className="authtorization-form container">
               <Button buttonClassName="authtorization-form__button button-google">
                 <img src={google} alt="#" />
@@ -29,15 +30,23 @@ const Login = ({setLogin,setPassword,sendData}) => {
               </Button>
 
               <Input  typeInput = "text" rootClassName = "form-group" 
-              inputClassName="authtorization-form__login authtorization-form__input" onChange = {setLogin} placeholder="Login"/>
+              inputClassName="authtorization-form__login authtorization-form__input" 
+              validation={{...login('login',{
+                required:true
+              })}} placeholder="Login"/>
               
               <Input showHidden ={true} typeInput = "password" rootClassName = "form-group" 
-              inputClassName="authtorization-form__password authtorization-form__input" onChange = {setPassword}  placeholder="Password"/>
+              inputClassName="authtorization-form__password authtorization-form__input" 
+               placeholder="Password"
+               validation={{...login('password',{
+                required:true
+              })}}
+               />
               
               <div className="login-form__forget">
                 <a href="#">Forget Password?</a>
               </div>
-              <Button buttonClassName="authtorization-form__button" onClick={sendData} >Sign In</Button>
+              <Button typeBtn={"submit"} buttonClassName="authtorization-form__button"  >Sign In</Button>
               <div className="route">
                 <span className="route__member">Not a member? <Link to="/register" className="route__ref">Register now</Link></span>
               </div>

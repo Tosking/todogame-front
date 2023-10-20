@@ -1,68 +1,71 @@
-import React,{ useState } from "react"
+import React from "react"
 import Login from "pages/Login"
 import Register from "pages/Register"
-import { instance } from "utils/axios"
 import { useLocation,useNavigate } from "react-router-dom"
-import { useDispatch } from 'react-redux';
-import { login } from "store/slice/auth"
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from "react-hook-form"
+import { loginUser, registerUser } from "store/thunk/auth"
 
 const AuthRootComponent = ()=>{
-
-  const [userlogin,setLogin] = useState('');
-  const [email,setEmail] = useState('');
-  const [password,setPassword] = useState('');
-  const [repeatPass,setRepeatPass] = useState('');
 
   const location = useLocation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const loading = useSelector((state)=>state.auth.isLoading)
+  const logged = useSelector((state)=>state.auth.isLogged)
+ 
+  console.log(logged);
+  //TODO: Добавить логику имитицаии загрузки при нажатии кнопки регистрации или же логина
+  const {
+    register,
+    formState:{
+      errors
+    },handleSubmit
+  } = useForm()
 
-  const handleSubmit = async(e)=>{
-    e.preventDefault()
-    if(location.pathname ==="/login")
-    {
-      const userData  = {
-        userlogin,
-        password
-      }
-      console.log(userData);
-      const user = await instance.post("/login",userData)
-      dispatch(login(user.data))
+  const handleSubmitForm = async(data)=>{
+    console.log(data);
+    if(location.pathname ==="/auth/login")
+    {      
+      dispatch(loginUser(data))
       navigate('/main')
     }
     else {
+      if(data.password ===data.repeatPassword)
+      {
       const userData  = {
-        userlogin,
-        email,
-        password,
-        repeatPass,
+        login:data.login,
+        email:data.email,
+        password:data.password,
+        repeatPass:data.repeatPassword,
       }
       try {
-        const newUser = await instance.post("/login",userData)
-        dispatch(login(newUser.data))
+        dispatch(registerUser(userData))
         navigate('/main')
       } catch (error) {
-          return e
+          return error
       }
     }
+    else{
+      return new Error("Error repeat password does not match the password")
+    }
+  }
     //TODO: Решить, будет ли токен или нет
 };
 
   return (
-      location.pathname === "/login" ? 
+      
+      location.pathname === "/auth/login" ? 
       <Login 
-      setLogin = {setLogin} 
-      setPassword = {setPassword}
-      sendData = {handleSubmit}  />:
-        location.pathname ==="/register"?
-        <Register 
-        setEmail = {setEmail} 
-        setPassword = {setPassword} 
-        setLogin = {setLogin} 
-        setRepeatPass = {setRepeatPass}
-        sendData = {handleSubmit}/>:
-        null 
-  )
+      login = {register}
+      errors = {errors}
+      sendData = {handleSubmit(handleSubmitForm)}  />:location.pathname ==="/auth/register"?
+      <Register 
+      errors = {errors}
+      register={register}
+      sendData = {handleSubmit(handleSubmitForm)}/>:
+      null
+ 
+   )
 }
 export default AuthRootComponent;
