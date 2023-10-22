@@ -9,7 +9,6 @@ import signin from "images/signin.svg";
 import headericon from "images/headericon.svg";
 
 
-
 const options = [
   {value: "All", label: <Link to="/all">All</Link>} ,
   {value:"Today" , label: <Link to = "/today">Today</Link>},
@@ -32,7 +31,7 @@ const Header = ({burger,to,children})=>{
            </div>
            
            <div className="bm-item bm-item__signin">
-            <Link to ="/auth/login" className="signin__inner">
+            <Link to ="/auth/signin" className="signin__inner">
               <img src={signin} alt="#" />
               <span style={{fontSize:"24px"}}>Sign In</span>
             </Link>

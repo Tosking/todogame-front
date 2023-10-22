@@ -3,14 +3,16 @@ import { instance } from "utils/axios";
 
 
 export const registerUser = createAsyncThunk(
-  'auth/register',
+  'auth/signup',
   async (data,{rejectWithValue})=>{
     try {
-      const user = await instance.post('/auth/register',data)
+      console.log("Data: ",data);
+      const user = await instance.post('/auth/signup',data)
       return user.data;
       
     } catch (error) {
         if(error.response && error.response.data.message){
+      
           return rejectWithValue(error.response.data.message)
         }
         else
@@ -19,14 +21,18 @@ export const registerUser = createAsyncThunk(
   }
 ) 
 export const loginUser = createAsyncThunk(
-  'auth/login',
+  'auth/signin',
   async (data,{rejectWithValue})=>{
+ 
     try {
-      const user = await instance.post('/auth/login',data)
+    
+      const user = await instance.post('/auth/signin',data)
+      
       return user.data;
       
     } catch (error) {
         if(error.response && error.response.data.message){
+          console.log("Exception: ");
           return rejectWithValue(error.response.data.message)
         }
         else

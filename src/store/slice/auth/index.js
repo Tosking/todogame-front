@@ -4,10 +4,11 @@ import { loginUser, registerUser } from "store/thunk/auth";
 //TODO: Дописать 
 const initialState = {
   user:{
-    id:'',
-    
+    login:"",
+    email:"",
+    password:""
   },
-  isLogged:true,
+  isLogged:false,
   isLoading:false
 }
 //Если необходимо поработать со страницами, то измените на true isLogged
@@ -34,6 +35,7 @@ export const authSlice = createSlice({
             state.isLoading = true
         })
         builder.addCase(registerUser.fulfilled, (state, action) => {
+     
             state.user = action.payload
             state.isLogged = true
             state.isLoading = false
@@ -44,5 +46,5 @@ export const authSlice = createSlice({
         })
   }
 })
-//TODO: Добавить reducer регистрации.
+
 export default authSlice.reducer

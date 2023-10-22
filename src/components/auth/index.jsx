@@ -1,7 +1,7 @@
 import React from "react"
 import Login from "pages/Login"
 import Register from "pages/Register"
-import { useLocation,useNavigate } from "react-router-dom"
+import { Navigate, useLocation,useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from "react-hook-form"
 import { loginUser, registerUser } from "store/thunk/auth"
@@ -13,8 +13,9 @@ const AuthRootComponent = ()=>{
   const navigate = useNavigate()
   const loading = useSelector((state)=>state.auth.isLoading)
   const logged = useSelector((state)=>state.auth.isLogged)
- 
-  console.log(logged);
+  const user = useSelector((state)=>state.auth.user)
+  console.log("User: ",user);
+
   //TODO: Добавить логику имитицаии загрузки при нажатии кнопки регистрации или же логина
   const {
     register,
@@ -24,8 +25,7 @@ const AuthRootComponent = ()=>{
   } = useForm()
 
   const handleSubmitForm = async(data)=>{
-    console.log(data);
-    if(location.pathname ==="/auth/login")
+    if(location.pathname ==="/auth/signin")
     {      
       dispatch(loginUser(data))
       navigate('/main')
@@ -37,7 +37,7 @@ const AuthRootComponent = ()=>{
         login:data.login,
         email:data.email,
         password:data.password,
-        repeatPass:data.repeatPassword,
+
       }
       try {
         dispatch(registerUser(userData))
@@ -54,12 +54,13 @@ const AuthRootComponent = ()=>{
 };
 
   return (
-      
-      location.pathname === "/auth/login" ? 
+      logged? <Navigate to={"/main"}></Navigate>:
+    
+      location.pathname === "/auth/signin" ? 
       <Login 
       login = {register}
       errors = {errors}
-      sendData = {handleSubmit(handleSubmitForm)}  />:location.pathname ==="/auth/register"?
+      sendData = {handleSubmit(handleSubmitForm)}  />:location.pathname ==="/auth/signup"?
       <Register 
       errors = {errors}
       register={register}

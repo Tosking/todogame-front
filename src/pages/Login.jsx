@@ -48,7 +48,7 @@ const Login = ({login,sendData,errors}) => {
               </div>
               <Button typeBtn={"submit"} buttonClassName="authtorization-form__button"  >Sign In</Button>
               <div className="route">
-                <span className="route__member">Not a member? <Link to="/register" className="route__ref">Register now</Link></span>
+                <span className="route__member">Not a member? <Link to="/auth/signup" className="route__ref">Register now</Link></span>
               </div>
             </div>
       </Form>

@@ -68,7 +68,7 @@ const Register = ({register,sendData,errors}) => {
 
             <Button typeBtn = {"submit"}  buttonClassName="authtorization-form__button">Create an account</Button>
             <div className="route">
-                <span className="route__member">Are you a member? <Link to ="/login" className="route__ref">Sign in now</Link></span>
+                <span className="route__member">Are you a member? <Link to ="/auth/signin" className="route__ref">Sign in now</Link></span>
             </div>
             </div>
         </Form>
