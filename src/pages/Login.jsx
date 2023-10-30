@@ -9,7 +9,7 @@ import "styleComponents/Authtorization.css";
 import google from "images/google.svg"
 
 const Login = ({login,sendData,errors}) => {
-  console.log(errors);
+
   return (
     
     <div className="App">

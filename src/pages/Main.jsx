@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from 'components/Header';
 import MainContent from 'components/Maincontent';
 import Button from 'components/Button';
@@ -9,10 +9,17 @@ import "styleComponents/Main.css"
 
 import account from "images/account.svg";
 import search  from "images/search.svg";
-
+import { useAuth } from 'utils/hook';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setUser } from 'store/slice/auth';
 
 
 const Main = () => {
+  const user = useSelector((state)=>state.auth.user)
+  const logged = useAuth()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   return (
    
@@ -27,7 +34,7 @@ const Main = () => {
           </Header>
           <MainContent contentClassName={"main-page"} addTask={true}>
             
-            <h1 className='content-header content-header_gradient'>Hello, sign in or register!</h1>
+            <h1 className='content-header content-header_gradient'>{"Hello," +user.login}</h1>
             <div className='categories'>
               <div className='section-name'>Categories</div>
               <div className="categories__inner">

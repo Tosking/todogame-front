@@ -1,22 +1,23 @@
-import React from "react"
+import React,{useEffect} from "react"
 import Login from "pages/Login"
 import Register from "pages/Register"
-import { Navigate, useLocation,useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
+import {useLocation,useNavigate } from "react-router-dom"
+import { useDispatch, useSelector} from 'react-redux';
 import { useForm } from "react-hook-form"
-import { loginUser, registerUser } from "store/thunk/auth"
+
+import { useLoginMutation, useRegisterMutation } from "store/slice/auth/authSlice";
+import { selectCurrentUser, setCredentials } from "store/slice/auth";
 
 const AuthRootComponent = ()=>{
 
+  const [login, isLoading] = useLoginMutation();
+  const user = useSelector(selectCurrentUser)
+  console.log(user);
+  const [registerUser] = useRegisterMutation();
   const location = useLocation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const loading = useSelector((state)=>state.auth.isLoading)
-  const logged = useSelector((state)=>state.auth.isLogged)
-  const user = useSelector((state)=>state.auth.user)
-  console.log("User: ",user);
-
-  //TODO: Добавить логику имитицаии загрузки при нажатии кнопки регистрации или же логина
+  
   const {
     register,
     formState:{
@@ -27,7 +28,8 @@ const AuthRootComponent = ()=>{
   const handleSubmitForm = async(data)=>{
     if(location.pathname ==="/auth/signin")
     {      
-      dispatch(loginUser(data))
+      const userData = await login(data).unwrap()
+      dispatch(setCredentials({...data,userData}))
       navigate('/main')
     }
     else {
@@ -40,7 +42,8 @@ const AuthRootComponent = ()=>{
 
       }
       try {
-        dispatch(registerUser(userData))
+        const userToken = await registerUser(userData).unwrap()
+        dispatch(setCredentials({...userToken}))
         navigate('/main')
       } catch (error) {
           return error
@@ -54,8 +57,6 @@ const AuthRootComponent = ()=>{
 };
 
   return (
-      logged? <Navigate to={"/main"}></Navigate>:
-    
       location.pathname === "/auth/signin" ? 
       <Login 
       login = {register}
@@ -69,4 +70,6 @@ const AuthRootComponent = ()=>{
  
    )
 }
+
+
 export default AuthRootComponent;

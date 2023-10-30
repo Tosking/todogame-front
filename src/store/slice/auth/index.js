@@ -1,50 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser } from "store/thunk/auth";
+import { createSlice } from "@reduxjs/toolkit"
+import Cookies from "universal-cookie"
+const cookies = new Cookies()
 
-//TODO: Дописать 
-const initialState = {
-  user:{
-    login:"",
-    email:"",
-    password:""
-  },
-  isLogged:false,
-  isLoading:false
+
+
+const initialState ={
+    user:{
+        login:cookies.get('login') ??null,
+        accessToken:null
+    }
 }
-//Если необходимо поработать со страницами, то измените на true isLogged
-export const authSlice = createSlice({
-  name:'auth',
-  initialState,
-  reducers:{},
-  extraReducers:(builder)=>{
-        builder.addCase(loginUser.pending, (state, action) => {
-          state.isLogged = false
-          state.isLoading = true
-      })
-        builder.addCase(loginUser.fulfilled, (state, action) => {
-            state.user = action.payload
-            state.isLogged = true
-            state.isLoading = false
-        })
-        builder.addCase(loginUser.rejected, (state, action) => {
-            state.isLogged = false
-            state.isLoading = false
-        })
-        builder.addCase(registerUser.pending, (state, action) => {
-            state.isLogged = false
-            state.isLoading = true
-        })
-        builder.addCase(registerUser.fulfilled, (state, action) => {
-     
-            state.user = action.payload
-            state.isLogged = true
-            state.isLoading = false
-        })
-        builder.addCase(registerUser.rejected, (state, action) => {
-            state.isLogged = false
-            state.isLoading = false
-        })
-  }
+
+const authSlice = createSlice({
+    name: 'auth',
+    initialState,
+    reducers: {
+        setCredentials: (state, action) => {
+            const { login, accessToken } = action.payload
+       
+            state.user.login = login
+            state.user.accessToken = accessToken
+        },
+        logOut: (state, action) => {
+            state.user.login = null
+            state.user.accessToken = null
+        }
+    },
 })
 
+export const { setCredentials, logOut } = authSlice.actions
+
 export default authSlice.reducer
+
+export const selectCurrentUser = (state) => state.auth.user.login
+export const selectCurrentToken = (state) => state.auth.user.token

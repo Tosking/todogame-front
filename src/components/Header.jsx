@@ -7,6 +7,8 @@ import 'react-dropdown/style.css';
 import arrowBurger from "images/arrowBurger.svg";
 import signin from "images/signin.svg";
 import headericon from "images/headericon.svg";
+import { useAuth } from "utils/hook";
+import { useDispatch } from "react-redux";
 
 
 const options = [
@@ -17,6 +19,7 @@ const options = [
 ]
 
 const Header = ({burger,to,children})=>{
+   
     return (
       <header className="header">
         <div className="header__inner container">
@@ -29,13 +32,15 @@ const Header = ({burger,to,children})=>{
            <div style={{flex:"1 1 auto"}}>
            <Select  isSearchable = {false }  value={"Folders"} options={options} placeholder="Folders"/>
            </div>
-           
-           <div className="bm-item bm-item__signin">
-            <Link to ="/auth/signin" className="signin__inner">
-              <img src={signin} alt="#" />
-              <span style={{fontSize:"24px"}}>Sign In</span>
-            </Link>
-           </div>
+ 
+              <div className="bm-item bm-item__signin">
+              <Link to ="/auth/signin" className="signin__inner" >
+                <img src={signin} alt="#" />
+                <span style={{fontSize:"24px"}}>Log out</span>
+              </Link>
+              </div>
+
+
           </Menu>:
           <Link to = {to??"/main"}>
              <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
