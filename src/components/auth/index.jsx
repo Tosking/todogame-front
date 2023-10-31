@@ -1,23 +1,23 @@
 import React,{useEffect} from "react"
 import Login from "pages/Login"
 import Register from "pages/Register"
-import {useLocation,useNavigate } from "react-router-dom"
-import { useDispatch, useSelector} from 'react-redux';
+import {Navigate, useLocation,useNavigate } from "react-router-dom"
+import { useDispatch} from 'react-redux';
 import { useForm } from "react-hook-form"
 
 import { useLoginMutation, useRegisterMutation } from "store/slice/auth/authSlice";
-import { selectCurrentUser, setCredentials } from "store/slice/auth";
+import {  setCredentials } from "store/slice/auth";
+import { useAuth } from "utils/hook";
 
 const AuthRootComponent = ()=>{
 
   const [login, isLoading] = useLoginMutation();
-  const user = useSelector(selectCurrentUser)
-  console.log(user);
   const [registerUser] = useRegisterMutation();
   const location = useLocation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+  const isAuth = useAuth()
+  console.log("User is auth?: ",isAuth);
   const {
     register,
     formState:{
@@ -29,8 +29,8 @@ const AuthRootComponent = ()=>{
     if(location.pathname ==="/auth/signin")
     {      
       const userData = await login(data).unwrap()
-      dispatch(setCredentials({...data,userData}))
-      navigate('/main')
+       dispatch(setCredentials({...data,userData}))
+      navigate('/')
     }
     else {
       if(data.password ===data.repeatPassword)
@@ -53,10 +53,10 @@ const AuthRootComponent = ()=>{
       return new Error("Error repeat password does not match the password")
     }
   }
-    //TODO: Решить, будет ли токен или нет
 };
 
   return (
+   
       location.pathname === "/auth/signin" ? 
       <Login 
       login = {register}

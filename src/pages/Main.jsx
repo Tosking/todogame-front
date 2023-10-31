@@ -9,17 +9,12 @@ import "styleComponents/Main.css"
 
 import account from "images/account.svg";
 import search  from "images/search.svg";
-import { useAuth } from 'utils/hook';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { setUser } from 'store/slice/auth';
+import {useSelector } from 'react-redux';
+
 
 
 const Main = () => {
   const user = useSelector((state)=>state.auth.user)
-  const logged = useAuth()
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   return (
    

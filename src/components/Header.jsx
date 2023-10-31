@@ -7,8 +7,8 @@ import 'react-dropdown/style.css';
 import arrowBurger from "images/arrowBurger.svg";
 import signin from "images/signin.svg";
 import headericon from "images/headericon.svg";
-import { useAuth } from "utils/hook";
 import { useDispatch } from "react-redux";
+import { logOut } from "store/slice/auth";
 
 
 const options = [
@@ -19,7 +19,7 @@ const options = [
 ]
 
 const Header = ({burger,to,children})=>{
-   
+   const dispatch = useDispatch()
     return (
       <header className="header">
         <div className="header__inner container">
@@ -34,7 +34,7 @@ const Header = ({burger,to,children})=>{
            </div>
  
               <div className="bm-item bm-item__signin">
-              <Link to ="/auth/signin" className="signin__inner" >
+              <Link className="signin__inner" to={"/auth/signin"}  onClick={e=>dispatch(logOut())}>
                 <img src={signin} alt="#" />
                 <span style={{fontSize:"24px"}}>Log out</span>
               </Link>

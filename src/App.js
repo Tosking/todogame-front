@@ -17,7 +17,6 @@ import "null.css";
 
 const  App = ()=> {
   return (  
-    
       <Routes>
         <Route path = "/auth/signup" element = {<AuthRootComponent/>}></Route>
         <Route path = "/auth/signin" element = {<AuthRootComponent/>}></Route>
