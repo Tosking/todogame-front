@@ -13,11 +13,13 @@ import PrivateRoute from "utils/router/privateRouter";
 import "App.css";
 import "normalize.css";
 import "null.css";
+import NotFoundPage from "pages/NotFoundPage";
 
 
 const  App = ()=> {
   return (  
       <Routes>
+        <Route path="*" element={<NotFoundPage/>} ></Route>
         <Route path = "/auth/signup" element = {<AuthRootComponent/>}></Route>
         <Route path = "/auth/signin" element = {<AuthRootComponent/>}></Route>
         <Route  element = {<PrivateRoute/>}>
