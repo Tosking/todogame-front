@@ -1,67 +1,63 @@
-.authtorization-form__input{
-    position: relative;
-    padding: 20px 40px;
-    font-size: 18px;
-    border-radius: 30px;
-    border:1px solid var(--input-color);
-    background-color: transparent;
-    line-height: 20px;
-    display: block;
-    width: 100%;
-    transition: 0.5s border-color;
+.authtorization-form__input {
+  position: relative;
+  padding: 20px 40px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: 1px solid var(--input-color);
+  background-color: transparent;
+  line-height: 20px;
+  display: block;
+  width: 100%;
+  transition: 0.5s border-color;
 }
-.authtorization-form__input::placeholder{
-    color:var( --input-color);
+.authtorization-form__input::placeholder {
+  color: var(--input-color);
 }
-.authtorization-form__label{
-    visibility: hidden;
-    position: absolute;
-    left:var(--x);
-    top:var(--y);
-   /* transform: translateY(-50%); */
-    padding: 0.5rem;
-    
-    border-radius: 10px;
-    transition: top 300ms, background-color 200ms,visibility 100ms;
+.authtorization-form__label {
+  visibility: hidden;
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  /* transform: translateY(-50%); */
+  padding: 0.5rem;
 
-
-
+  border-radius: 10px;
+  transition: top 300ms, background-color 200ms, visibility 100ms;
 }
-.authtorization-form__input:focus{
-    border-color:#ffff;
-    transition: 0.5s border-color;
+.authtorization-form__input:focus {
+  border-color: #ffff;
+  transition: 0.5s border-color;
 }
-.authtorization-form__input:focus ~label{
-    visibility: visible;
-    background-color: var(--main-color);
-    top:calc(var(--y) * -1);
-    font-size:14px;
-    
+.authtorization-form__input:focus ~ label {
+  visibility: visible;
+  background-color: var(--main-color);
+  top: calc(var(--y) * -1);
+  font-size: 14px;
 }
-.authtorization-form__button{
-    padding: 16px 30px;
-    margin-top:20px;
-    font-size: 18px;
-    line-height: 28px;
-    border-radius: 30px;
-    background-color: var(--button-color);
-    transition: 0.4s background-color;
-   
+.authtorization-form__button {
+  display: flex;
+  justify-content: center;
+  padding: 16px 30px;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 28px;
+  border-radius: 30px;
+  background-color: var(--button-color);
+  transition: 0.4s background-color;
 }
-.authtorization-form__button:hover{
-    background-color:var(--button-hover);
+.authtorization-form__button:hover {
+  background-color: var(--button-hover);
 }
-.button-google{
-    display: flex;
-    align-items: center;
-    gap:10px;
-    justify-content: center;
+.button-google {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
-.input__handlepassword{
-    position: absolute;
-    top:50%;
-    right:30px;
-    transform: translateY(-50%);
-    cursor: pointer;
-
+.input__handlepassword {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }

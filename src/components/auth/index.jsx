@@ -14,8 +14,8 @@ import { selectCurrentUser, setCredentials } from "store/slice/auth";
 import { useAuth } from "utils/hook";
 
 const AuthRootComponent = () => {
-  const [login, isLoading] = useLoginMutation();
-  const [registerUser] = useRegisterMutation();
+  const [login, { isLoadingLogin }] = useLoginMutation();
+  const [registerUser, { isLoadingRegister }] = useRegisterMutation();
   const location = useLocation();
   const isAuth = useAuth();
   const dispatch = useDispatch();
@@ -68,12 +68,14 @@ const AuthRootComponent = () => {
       login={register}
       errors={errors}
       sendData={handleSubmit(handleSubmitForm)}
+      loading={isLoadingLogin}
     />
   ) : location.pathname === "/auth/signup" ? (
     <Register
       errors={errors}
       register={register}
       sendData={handleSubmit(handleSubmitForm)}
+      loading={isLoadingRegister}
     />
   ) : null;
 };

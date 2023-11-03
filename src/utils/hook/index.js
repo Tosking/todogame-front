@@ -18,7 +18,7 @@ export const useAuth = () => {
         const userToken = await refreshToken().unwrap();
         dispatch(setCredentials({ ...userToken }));
         navigate("/main");
-      }
+      } else return;
     };
     loadUser();
   }, [refreshToken]);

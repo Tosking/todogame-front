@@ -50,7 +50,7 @@ const Header = ({ burger, to, children }) => {
               <Link
                 className="signin__inner"
                 to={"/auth/signin"}
-                onClick={(e) => dispatch(logOut())}
+                onClick={logOutUser}
               >
                 <img src={signin} alt="#" />
                 <span style={{ fontSize: "24px" }}>Log out</span>
