@@ -21,7 +21,6 @@ const authSlice = createSlice({
       state.user.accessToken = accessToken;
     },
     logOut: (state, action) => {
-      console.log("work");
       state.user.login = null;
       state.user.accessToken = null;
     },

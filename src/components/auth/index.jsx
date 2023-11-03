@@ -1,24 +1,24 @@
 import React from "react";
 import Login from "pages/Login";
 import Register from "pages/Register";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-
+import { setCredentials } from "store/slice/auth";
+import { useAuth } from "utils/hook";
 import {
   useLoginMutation,
   useRegisterMutation,
-  useRefreshMutation,
 } from "store/slice/auth/authSlice";
-import { selectCurrentUser, setCredentials } from "store/slice/auth";
-import { useAuth } from "utils/hook";
 
 const AuthRootComponent = () => {
-  const [login, { isLoadingLogin }] = useLoginMutation();
-  const [registerUser, { isLoadingRegister }] = useRegisterMutation();
+  const [login, { isLoading: isLoadingLogin }] = useLoginMutation();
+
+  const [registerUser, { isLoading: isLoadingRegister }] =
+    useRegisterMutation();
   const location = useLocation();
-  const isAuth = useAuth();
   const dispatch = useDispatch();
+  const isAuth = useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -31,7 +31,7 @@ const AuthRootComponent = () => {
       try {
         const userData = await login(data).unwrap();
         dispatch(setCredentials({ ...data, userData }));
-        navigate("/");
+        navigate("/main");
       } catch (error) {
         if (!error?.originalStatus) {
           // isLoading: true until timeout occurs
@@ -63,7 +63,10 @@ const AuthRootComponent = () => {
       }
     }
   };
-  return location.pathname === "/auth/signin" ? (
+
+  return isAuth ? (
+    <Navigate to={location.state?.from ?? "/main"} replace />
+  ) : location.pathname === "/auth/signin" ? (
     <Login
       login={register}
       errors={errors}

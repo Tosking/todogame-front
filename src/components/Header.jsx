@@ -21,17 +21,19 @@ const options = [
 const Header = ({ burger, to, children }) => {
   const dispatch = useDispatch();
   const [logout] = useLogOutMutation();
+
   const logOutUser = async (e) => {
     await logout();
     dispatch(logOut());
   };
+
   return (
     <header className="header">
       <div className="header__inner container">
         {burger ? (
           <Menu
-            customBurgerIcon={<img src={headericon} />}
-            customCrossIcon={<img src={arrowBurger} />}
+            customBurgerIcon={<img alt="#" src={headericon} />}
+            customCrossIcon={<img alt="#" src={arrowBurger} />}
           >
             <Link to="/main">Home</Link>
             <Link to="/account">Account</Link>
