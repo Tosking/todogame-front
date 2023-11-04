@@ -1,4 +1,4 @@
-import { apiSlice } from "store/thunk/auth";
+import { apiSlice } from "store/api";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
