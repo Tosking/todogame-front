@@ -30,7 +30,7 @@ const Register = ({ register, sendData, errors, loading }) => {
               inputClassName="authtorization-form-signup__login authtorization-form__input"
               placeholder="Login"
             />
-            {errors.login && <h1>This field is required</h1>}
+            {errors.login && <h1 className="error">This field is required</h1>}
             <Input
               validation={{
                 ...register("email", {
@@ -41,12 +41,18 @@ const Register = ({ register, sendData, errors, loading }) => {
               rootClassName="form-group"
               inputClassName="authtorization-form-signup__email authtorization-form__input"
               placeholder="Email"
+              invalid={errors.email ? true : false}
             />
-            {errors.email && <h1>This field is required</h1>}
+            {errors.email && <h1 className="error">This field is required</h1>}
+
             <Input
               validation={{
                 ...register("password", {
                   required: true,
+                  pattern: {
+                    value: /[^\x00-\x7F]/g,
+                    message: "Password length must be at least 8 characters",
+                  },
                 }),
               }}
               showHidden={true}
@@ -55,8 +61,9 @@ const Register = ({ register, sendData, errors, loading }) => {
               inputClassName="authtorization-form-signup__password authtorization-form__input"
               placeholder="Create a Password"
             />
-            {errors.password && <h1>This field is required</h1>}
-
+            {errors.password && (
+              <h1 className="error">This field is required</h1>
+            )}
             <Input
               validation={{
                 ...register("repeatPassword", {
@@ -68,8 +75,9 @@ const Register = ({ register, sendData, errors, loading }) => {
               inputClassName="authtorization-form-signup__repeat-password authtorization-form__input"
               placeholder="Repeat the Password"
             />
-            {errors.repeatPassword && <h1>This field is required</h1>}
-
+            {errors.repeatPassword && (
+              <h1 className="error">This field is required</h1>
+            )}
             <Button
               typeBtn={"submit"}
               buttonClassName="authtorization-form__button"

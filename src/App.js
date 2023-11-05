@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 
@@ -9,39 +9,13 @@ import ChangeEmail from "pages/settings/ChangeEmail";
 import ChooseTheme from "pages/settings/ChooseTheme";
 import AuthRootComponent from "components/auth";
 import PrivateRoute from "utils/router/privateRouter";
-import { useDispatch } from "react-redux";
-import { useRefreshMutation } from "store/slice/auth/authSlice";
-import {
-  selectCurrentToken,
-  setCredentials,
-  selectCurrentUser,
-} from "store/slice/auth";
-import { useSelector } from "react-redux";
+
 import "App.css";
 import "normalize.css";
 import "null.css";
 import NotFoundPage from "pages/NotFoundPage";
 
 const App = () => {
-  const user = useSelector(selectCurrentUser);
-  const token = useSelector(selectCurrentToken);
-  const [refreshToken] = useRefreshMutation();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    console.log("useEffect in App.js");
-    const loadUser = async () => {
-      if (!token && user) {
-        try {
-          const userToken = await refreshToken().unwrap();
-          dispatch(setCredentials({ ...userToken }));
-        } catch (error) {
-          console.log("In useAuth: ", error);
-        }
-      } else return;
-    };
-    loadUser();
-  }, [refreshToken, dispatch, token, user]);
-
   return (
     <div className="App">
       <Routes>

@@ -10,7 +10,6 @@ import google from "images/google.svg";
 import MoonLoader from "react-spinners/MoonLoader";
 
 const Login = ({ login, sendData, errors, loading }) => {
-  console.log(loading);
   return (
     <div className="authorization signin">
       <div className="authorization__inner container">

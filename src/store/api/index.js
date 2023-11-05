@@ -6,9 +6,14 @@ const baseQuery = fetchBaseQuery({
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.accessToken;
-    console.log("Token in API: ", token);
+
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
+      headers.set("Access-Control-Allow-Origin", "*");
+      headers.set(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+      );
     }
     return headers;
   },

@@ -61,3 +61,14 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
+.error {
+  font-weight: 400;
+  border-color: var(--input-error-color) !important;
+  color: var(--input-error-color);
+  font-size: 16px;
+  align-self: start;
+}
+.authtorization-form__input:invalid {
+  border-color: var(--input-error-color) !important;
+  color: var(--input-error-color);
+}

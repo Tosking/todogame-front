@@ -19,12 +19,16 @@ const AuthRootComponent = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const isAuth = useAuth();
+
   const navigate = useNavigate();
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+    reset,
+  } = useForm({
+    mode: "onChange",
+  });
 
   const handleSubmitForm = async (data) => {
     if (location.pathname === "/auth/signin") {
@@ -63,7 +67,6 @@ const AuthRootComponent = () => {
       }
     }
   };
-
   return isAuth ? (
     <Navigate to={location.state?.from ?? "/main"} replace />
   ) : location.pathname === "/auth/signin" ? (

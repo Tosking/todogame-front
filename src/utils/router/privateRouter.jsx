@@ -7,6 +7,7 @@ import { useAuth } from "utils/hook";
 const PrivateRoute = () => {
   const auth = useAuth();
   const location = useLocation();
+
   return auth ? (
     <Outlet />
   ) : (

@@ -1,24 +1,20 @@
 :root {
-  --main-color: #E839AD;
-  --main-color-2:#302DD7;
-  --elem-outer-color:#706EDA;
-  --rote-ref:#550862;
-  --button-color: #9B99E5;
-  --button-hover:#8683c9;
-  --task-color:#444444;
-  --input-color:#B7B5B5;
-  
-  
-
+  --main-color: #e839ad;
+  --main-color-2: #302dd7;
+  --elem-outer-color: #706eda;
+  --rote-ref: #550862;
+  --button-color: #9b99e5;
+  --button-hover: #8683c9;
+  --task-color: #444444;
+  --input-color: #b7b5b5;
+  --input-error-color: #b80f0f;
 }
 
 .App {
   text-align: center;
   height: 100vh;
   width: 100%;
-   background-color: var( --task-color); 
-  
-  
+  background-color: var(--task-color);
 }
 
 .container {
