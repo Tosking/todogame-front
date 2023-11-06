@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Input from "components/Input";
 import Button from "components/Button";
 import { Link } from "react-router-dom";
@@ -7,8 +7,14 @@ import Header from "components/Header";
 import MainContent from "components/Maincontent";
 import "styleComponents/Authtorization.css";
 import MoonLoader from "react-spinners/MoonLoader";
+import { RegisterPattern } from "utils/validationPatterns";
+const Register = ({ register, sendData, errors, loading, isValid, watch }) => {
+  const { minLength } = RegisterPattern.password;
+  const { required } = RegisterPattern;
+  const { pattern } = RegisterPattern.email;
+  const password = useRef({});
+  password.current = watch("password", "");
 
-const Register = ({ register, sendData, errors, loading }) => {
   return (
     <div className="authorization signin">
       <div className="authorization__inner container">
@@ -22,7 +28,7 @@ const Register = ({ register, sendData, errors, loading }) => {
             <Input
               validation={{
                 ...register("login", {
-                  required: true,
+                  required,
                 }),
               }}
               typeInput="text"
@@ -30,29 +36,26 @@ const Register = ({ register, sendData, errors, loading }) => {
               inputClassName="authtorization-form-signup__login authtorization-form__input"
               placeholder="Login"
             />
-            {errors.login && <h1 className="error">This field is required</h1>}
+            {errors.login && <h1 className="error">{errors.login.message}</h1>}
             <Input
               validation={{
                 ...register("email", {
-                  required: true,
+                  required,
+                  pattern,
                 }),
               }}
               typeInput="text"
               rootClassName="form-group"
               inputClassName="authtorization-form-signup__email authtorization-form__input"
               placeholder="Email"
-              invalid={errors.email ? true : false}
             />
-            {errors.email && <h1 className="error">This field is required</h1>}
+            {errors.email && <h1 className="error">{errors.email.message}</h1>}
 
             <Input
               validation={{
                 ...register("password", {
-                  required: true,
-                  pattern: {
-                    value: /[^\x00-\x7F]/g,
-                    message: "Password length must be at least 8 characters",
-                  },
+                  required,
+                  minLength,
                 }),
               }}
               showHidden={true}
@@ -62,12 +65,15 @@ const Register = ({ register, sendData, errors, loading }) => {
               placeholder="Create a Password"
             />
             {errors.password && (
-              <h1 className="error">This field is required</h1>
+              <h1 className="error">{errors.password.message}</h1>
             )}
             <Input
               validation={{
                 ...register("repeatPassword", {
-                  required: true,
+                  required,
+                  validate: (fieldValue) =>
+                    fieldValue === password.current ||
+                    "The passwords do not match",
                 }),
               }}
               typeInput="text"
@@ -76,9 +82,10 @@ const Register = ({ register, sendData, errors, loading }) => {
               placeholder="Repeat the Password"
             />
             {errors.repeatPassword && (
-              <h1 className="error">This field is required</h1>
+              <h1 className="error">{errors.repeatPassword.message}</h1>
             )}
             <Button
+              isValid={isValid}
               typeBtn={"submit"}
               buttonClassName="authtorization-form__button"
             >

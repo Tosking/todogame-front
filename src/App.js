@@ -14,11 +14,19 @@ import "App.css";
 import "normalize.css";
 import "null.css";
 import NotFoundPage from "pages/NotFoundPage";
+import PublicRoute from "utils/router/publicRouter";
 
 const App = () => {
   return (
     <div className="App">
       <Routes>
+        {/* Public routes */}
+        <Route element={<PublicRoute />}>
+          <Route path="/auth/signup" element={<AuthRootComponent />}></Route>
+          <Route path="/auth/signin" element={<AuthRootComponent />}></Route>
+        </Route>
+        {/* Private routes */}
+
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Main />}></Route>
           <Route path="/main" element={<Main />}></Route>
@@ -32,13 +40,9 @@ const App = () => {
           <Route path="/settingsTheme" element={<ChooseTheme />}></Route>
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>
-
-        <Route path="/auth/signup" element={<AuthRootComponent />}></Route>
-        <Route path="/auth/signin" element={<AuthRootComponent />}></Route>
       </Routes>
     </div>
   );
 };
-//TODO: Решить с приватными роутами, какие должны быть приватными, какие нет
 
 export default App;

@@ -9,7 +9,10 @@ import "styleComponents/Authtorization.css";
 import google from "images/google.svg";
 import MoonLoader from "react-spinners/MoonLoader";
 
-const Login = ({ login, sendData, errors, loading }) => {
+import { LoginPattern } from "utils/validationPatterns";
+const Login = ({ login, sendData, errors, loading, isValid, watch }) => {
+  const { minLength } = LoginPattern.password;
+  const { required } = LoginPattern;
   return (
     <div className="authorization signin">
       <div className="authorization__inner container">
@@ -31,12 +34,12 @@ const Login = ({ login, sendData, errors, loading }) => {
               inputClassName="authtorization-form__login authtorization-form__input"
               validation={{
                 ...login("login", {
-                  required: true,
+                  required,
                 }),
               }}
               placeholder="Login"
             />
-
+            {errors.login && <h1 className="error">{errors.login.message}</h1>}
             <Input
               showHidden={true}
               typeInput="password"
@@ -45,15 +48,20 @@ const Login = ({ login, sendData, errors, loading }) => {
               placeholder="Password"
               validation={{
                 ...login("password", {
-                  required: true,
+                  required,
+                  minLength,
                 }),
               }}
             />
+            {errors.password && (
+              <h1 className="error">{errors.password.message}</h1>
+            )}
 
             <div className="login-form__forget">
               <Link>Forget Password?</Link>
             </div>
             <Button
+              isValid={isValid}
               typeBtn={"submit"}
               buttonClassName="authtorization-form__button"
             >

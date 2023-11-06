@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "utils/hook";
 
@@ -11,20 +11,21 @@ import {
   setCredentials,
 } from "store/slice/auth";
 
-const PrivateRoute = () => {
+const PublicRoute = () => {
   const auth = useAuth();
   const location = useLocation();
   const token = useSelector(selectCurrentToken);
   const user = useSelector(selectCurrentUser);
   const [refreshToken] = useRefreshMutation();
   const dispatch = useDispatch();
+  const from = location?.state?.from || "/";
 
   useEffect(() => {
     const loadUser = async () => {
       try {
         const userToken = await refreshToken().unwrap();
         dispatch(setCredentials({ ...userToken }));
-        console.log("PrvivateRoute data: ", userToken);
+        console.log("PublicRouter data: ", userToken);
       } catch (error) {
         console.log("In useAuth: ", error);
       }
@@ -32,10 +33,6 @@ const PrivateRoute = () => {
     if (!token && user) loadUser();
   }, [auth]);
 
-  return auth ? (
-    <Outlet />
-  ) : (
-    <Navigate to={"/auth/signin"} state={{ from: location.pathname }} replace />
-  );
+  return !auth ? <Outlet /> : <Navigate to={from} state={location.pathname} />;
 };
-export default PrivateRoute;
+export default PublicRoute;

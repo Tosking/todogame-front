@@ -1,11 +1,11 @@
 import React from "react";
 import Login from "pages/Login";
 import Register from "pages/Register";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { setCredentials } from "store/slice/auth";
-import { useAuth } from "utils/hook";
+
 import {
   useLoginMutation,
   useRegisterMutation,
@@ -13,21 +13,20 @@ import {
 
 const AuthRootComponent = () => {
   const [login, { isLoading: isLoadingLogin }] = useLoginMutation();
-
   const [registerUser, { isLoading: isLoadingRegister }] =
     useRegisterMutation();
   const location = useLocation();
   const dispatch = useDispatch();
-  const isAuth = useAuth();
-
   const navigate = useNavigate();
+
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
     reset,
+    watch,
   } = useForm({
-    mode: "onChange",
+    mode: "all",
   });
 
   const handleSubmitForm = async (data) => {
@@ -35,6 +34,7 @@ const AuthRootComponent = () => {
       try {
         const userData = await login(data).unwrap();
         dispatch(setCredentials({ ...data, userData }));
+        reset();
         navigate("/main");
       } catch (error) {
         if (!error?.originalStatus) {
@@ -57,7 +57,9 @@ const AuthRootComponent = () => {
         };
         try {
           const userToken = await registerUser(userData).unwrap();
-          dispatch(setCredentials({ ...userToken }));
+          dispatch(setCredentials({ ...userData, ...userToken }));
+          reset();
+
           navigate("/main");
         } catch (error) {
           return error;
@@ -67,14 +69,14 @@ const AuthRootComponent = () => {
       }
     }
   };
-  return isAuth ? (
-    <Navigate to={location.state?.from ?? "/main"} replace />
-  ) : location.pathname === "/auth/signin" ? (
+  return location.pathname === "/auth/signin" ? (
     <Login
       login={register}
       errors={errors}
       sendData={handleSubmit(handleSubmitForm)}
       loading={isLoadingLogin}
+      isValid={isValid}
+      watch={watch}
     />
   ) : location.pathname === "/auth/signup" ? (
     <Register
@@ -82,6 +84,8 @@ const AuthRootComponent = () => {
       register={register}
       sendData={handleSubmit(handleSubmitForm)}
       loading={isLoadingRegister}
+      isValid={isValid}
+      watch={watch}
     />
   ) : null;
 };

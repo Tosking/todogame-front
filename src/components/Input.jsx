@@ -11,7 +11,6 @@ const Input = ({
   showHidden,
   validation,
   value,
-  invalid,
 }) => {
   const [type, setType] = useState("password");
   const [toggleIcon, setToggleIcon] = useState(closeeye);
@@ -29,7 +28,6 @@ const Input = ({
   return (
     <div className={rootClassName}>
       <input
-        aria-invalid={invalid}
         value={value}
         {...validation}
         type={showHidden ? type : typeInput}

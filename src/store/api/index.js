@@ -4,16 +4,12 @@ import { setCredentials, logOut } from "store/slice/auth";
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:3001",
   credentials: "include",
+  mode: "cors",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.accessToken;
 
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
-      headers.set("Access-Control-Allow-Origin", "*");
-      headers.set(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-      );
     }
     return headers;
   },
