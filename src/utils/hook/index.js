@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useRefreshMutation } from "store/slice/auth/authSlice";
 
@@ -10,6 +11,22 @@ import {
 
 export const useAuth = () => {
   const token = useSelector(selectCurrentToken);
+  const user = useSelector(selectCurrentUser);
+  const [refreshToken] = useRefreshMutation();
+  const dispatch = useDispatch();
 
-  return !!token;
+  useLayoutEffect(() => {
+    const loadUser = async () => {
+      try {
+        const userToken = await refreshToken().unwrap();
+        dispatch(setCredentials({ ...userToken }));
+        console.log("PrvivateRoute data: ", userToken);
+      } catch (error) {
+        console.log("In useAuth: ", error);
+      }
+    };
+    if (!token && user) loadUser();
+  }, []);
+
+  return { user, token };
 };

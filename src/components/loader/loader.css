@@ -1,0 +1,11 @@
+.page-loader {
+  background-color: var(--page-loader-color);
+}
+.page-loader-content {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  gap: 15px;
+}

@@ -8,13 +8,14 @@
   --task-color: #444444;
   --input-color: #b7b5b5;
   --input-error-color: #b80f0f;
+  --page-loader-color: #2e2e2e;
 }
 
 .App {
   text-align: center;
   height: 100vh;
   width: 100%;
-  background-color: var(--task-color);
+  background-color: var(--page-loader-color);
 }
 
 .container {
