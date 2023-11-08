@@ -33,7 +33,8 @@ const AuthRootComponent = () => {
     if (location.pathname === "/auth/signin") {
       try {
         const userData = await login(data).unwrap();
-        dispatch(setCredentials({ ...data, userData }));
+        console.log("s", userData);
+        dispatch(setCredentials({ ...data, ...userData }));
         reset();
         navigate("/main");
       } catch (error) {

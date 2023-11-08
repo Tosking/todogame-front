@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "components/Header";
 import MainContent from "components/Maincontent";
 import Button from "components/Button";
-import Task from "components/Task";
 
 import "styleComponents/MainPage.css";
 import "styleComponents/Main.css";
-
 import account from "images/account.svg";
 import search from "images/search.svg";
 import { useSelector } from "react-redux";
+import { getTodos } from "store/slice/todos";
+import { selectCurrentUser } from "store/slice/auth";
+import NewTask from "components/todo/NewTask";
+import TodoList from "components/todo/TodoList";
 
 const Main = () => {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector(selectCurrentUser);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
 
+  const tasks = [
+    { title: "test", description: "test" },
+    { title: "test2", description: "test2" },
+  ];
+
+  console.log("render");
   return (
     <div className="main-page">
       <div className={"main-page__inner container"}>
@@ -29,7 +39,7 @@ const Main = () => {
         </Header>
         <MainContent contentClassName={"main-page"} addTask={true}>
           <h1 className="content-header content-header_gradient">
-            {"Hello," + user.login}
+            {"Hello," + user}
           </h1>
           <div className="categories">
             <div className="section-name">Categories</div>
@@ -40,14 +50,22 @@ const Main = () => {
               </Button>
             </div>
           </div>
-          <div className="tasks">
+          <TodoList />
+          {/* <div className="tasks">
             <div className="section-name">Tasks</div>
-            <Task>Eugene</Task>
-            <Task>Danil</Task>
-            <Task>Rodion</Task>
-            <Task>Nastya</Task>
-            <Task>Vova</Task>
-          </div>
+            {tasks.map((value) => {
+              return (
+                <Task key={value.title} title={value.title}>
+                  {value.description}
+                </Task>
+              );
+            })}
+          </div> */}
+          <NewTask setOpen={setOpen} open={open} />
+          <Button onClick={handleOpen} buttonClassName={"content-create-task"}>
+            <span></span>
+            <span></span>
+          </Button>
         </MainContent>
       </div>
     </div>

@@ -1,24 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
+const cacheTodos = JSON.parse(localStorage.getItem("todos"));
+console.log(cacheTodos);
 const initialState = {
-  todos: [
-    {
-      id: null,
-      title: "",
-      description: "",
-      category: "",
-      deadline: "",
-      completed: false,
-      userid: null,
-    },
-  ],
+  todos: [] && cacheTodos,
 };
 const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      state.todos.push(action.payload);
+      state.todos.push({
+        id: action.payload.id,
+        title: action.payload.title,
+        description: action.payload.description,
+        category: action.payload.category && "",
+        deadline: action.payload.deadline && "",
+        completed: action.payload.completed && false,
+        userid: cookies.get("id"),
+      });
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     removeTodo: (state, action) => {
       const { id } = action.payload;
@@ -31,5 +34,8 @@ const todosSlice = createSlice({
     },
   },
 });
+
+export const getTodos = (state) => state.todos.todos;
+
 export const { addTodo, removeTodo } = todosSlice.actions;
 export default todosSlice.reducer;

@@ -4,23 +4,23 @@ export const todosApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     addTodo: builder.mutation({
       query: (credentials) => ({
-        url: "/todo/add",
+        url: "/task/create",
         method: "POST",
-        body: { credentials },
+        body: { ...credentials },
       }),
     }),
     removeTodo: builder.mutation({
       query: (credentials) => ({
-        url: "/todo/remove",
+        url: "/task/delete",
         method: "DELETE",
-        body: { credentials },
+        body: { ...credentials },
       }),
     }),
     toggleTodo: builder.mutation({
       query: (credentials) => ({
         url: "/todo/toggle",
         method: "POST",
-        body: { credentials },
+        body: { ...credentials },
       }),
     }),
   }),
