@@ -9,6 +9,14 @@
 	padding: 0 23px;
 }
 
+.settings-word{
+	font-size: 24px;
+	background: none;
+	width: 100%;
+	background: none;
+	color: #FFFFFF;
+}
+
 
 /* Choose Theme */
 .theme-content{
