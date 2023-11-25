@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 
 import { Modal, Typography, Box, Stack } from "@mui/material";
 import { Form, useForm } from "react-hook-form";
@@ -7,21 +7,23 @@ import { FormControl } from "@mui/material";
 import Button from "components/Button";
 import { useDispatch } from "react-redux";
 import { addTodo } from "store/slice/todos";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const NewTask = ({ setOpen, open }) => {
   const { control, register, reset } = useForm();
   const dispatch = useDispatch();
+  const style = useMemo(() => {
+    return {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      width: 400,
+      bgcolor: "background.paper",
+      border: "2px solid #000",
+      boxShadow: 24,
+      p: 4,
+    };
+  }, []);
 
   const handleClose = () => {
     setOpen(false);

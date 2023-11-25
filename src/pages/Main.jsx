@@ -8,7 +8,6 @@ import "styleComponents/Main.css";
 import account from "images/account.svg";
 import search from "images/search.svg";
 import { useSelector } from "react-redux";
-import { getTodos } from "store/slice/todos";
 import { selectCurrentUser } from "store/slice/auth";
 import NewTask from "components/todo/NewTask";
 import TodoList from "components/todo/TodoList";
@@ -17,13 +16,6 @@ const Main = () => {
   const user = useSelector(selectCurrentUser);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-
-  const tasks = [
-    { title: "test", description: "test" },
-    { title: "test2", description: "test2" },
-  ];
-
-  console.log("render");
   return (
     <div className="main-page">
       <div className={"main-page__inner container"}>
@@ -51,16 +43,7 @@ const Main = () => {
             </div>
           </div>
           <TodoList />
-          {/* <div className="tasks">
-            <div className="section-name">Tasks</div>
-            {tasks.map((value) => {
-              return (
-                <Task key={value.title} title={value.title}>
-                  {value.description}
-                </Task>
-              );
-            })}
-          </div> */}
+
           <NewTask setOpen={setOpen} open={open} />
           <Button onClick={handleOpen} buttonClassName={"content-create-task"}>
             <span></span>

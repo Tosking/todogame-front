@@ -5,13 +5,14 @@ const cookies = new Cookies();
 const cacheTodos = JSON.parse(localStorage.getItem("todos"));
 console.log(cacheTodos);
 const initialState = {
-  todos: [] && cacheTodos,
+  todos: cacheTodos || [],
 };
 const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
     addTodo: (state, action) => {
+      console.log(action);
       state.todos.push({
         id: action.payload.id,
         title: action.payload.title,

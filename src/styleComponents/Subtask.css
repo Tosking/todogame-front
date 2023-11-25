@@ -1,0 +1,15 @@
+.subtasks {
+  width: 100%;
+  border-top: 2px dashed #b0b0b0;
+}
+.subtasks__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 27px 55px;
+  font-size: 14px;
+}
+.subtask {
+  display: flex;
+  align-items: center;
+}

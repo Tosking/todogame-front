@@ -9,7 +9,7 @@ const PrivateRoute = () => {
   if (user && !token) {
     return <Loader />;
   }
-  return !token ? (
+  return token ? (
     <Outlet />
   ) : (
     <Navigate to={"/auth/signin"} state={{ from: location.pathname }} replace />

@@ -4,13 +4,11 @@ import { useSelector } from "react-redux";
 import { getTodos } from "store/slice/todos";
 
 const TodoList = () => {
-  const todos = useSelector(getTodos);
-
+  const todos = useSelector(getTodos) || [];
   return (
     <div className="tasks">
       <div className="section-name">Tasks</div>
       {todos.map((value) => {
-        console.log(value);
         return (
           <Task key={value.title} title={value.title}>
             {value.description}
