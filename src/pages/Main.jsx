@@ -5,8 +5,8 @@ import Button from "components/Button";
 
 import "styleComponents/MainPage.css";
 import "styleComponents/Main.css";
-import account from "images/account.svg";
-import search from "images/search.svg";
+import { ReactComponent as Account } from "images/account.svg";
+import { ReactComponent as Search } from "images/search.svg";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "store/slice/auth";
 import NewTask from "components/todo/NewTask";
@@ -22,10 +22,12 @@ const Main = () => {
         <Header burger={true}>
           <div className="header-inner__profile">
             <Button buttonClassName={"profile__search"}>
-              <img alt="#" src={search} />
+              {/* <img alt="#" src={search} /> */}
+              <Search />
             </Button>
             <Button buttonClassName={"profile__account"}>
-              <img alt="#" src={account} />
+              {/* <img alt="#" src={account} /> */}
+              <Account />
             </Button>
           </div>
         </Header>

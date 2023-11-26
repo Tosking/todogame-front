@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Checkbox } from "pretty-checkbox-react";
 import "pretty-checkbox/dist/pretty-checkbox.css";
 import "styleComponents/Subtask.css";
+import { ReactComponent as EditTask } from "images/edittask.svg";
+import { ReactComponent as Add } from "images/add.svg";
+import { ReactComponent as Remove } from "images/remove.svg";
 
 const Task = ({ children, title }) => {
   const [open, setOpen] = useState(false);
@@ -42,28 +45,38 @@ const Task = ({ children, title }) => {
         </svg>
       </div>
       {open && (
-        <div className="subtasks">
-          <div className="subtasks__inner">
-            <div className="subtask">
-              <Checkbox
-                style={{ fontSize: "15px", marginRight: "10px" }}
-                shape="round"
-                color="success"
-                animation="pulse"
-              />
-              <span>Name Subtask</span>
-            </div>
-            <div className="subtask">
-              <Checkbox
-                style={{ fontSize: "15px", marginRight: "10px" }}
-                shape="round"
-                color="success"
-                animation="pulse"
-              />
-              <span>Name Subtask</span>
+        <>
+          <div className="subtasks">
+            <div className="subtasks__inner">
+              <div className="subtask">
+                <Checkbox
+                  style={{ fontSize: "15px", marginRight: "10px" }}
+                  shape="round"
+                  color="success"
+                  animation="pulse"
+                />
+                <span>Name Subtask</span>
+              </div>
+              <div className="subtask">
+                <Checkbox
+                  style={{ fontSize: "15px", marginRight: "10px" }}
+                  shape="round"
+                  color="success"
+                  animation="pulse"
+                />
+                <span>Name Subtask</span>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div className="task-settings">
+            <div className="settings__inner">
+              <EditTask />
+              <Add />
+              <Remove />
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

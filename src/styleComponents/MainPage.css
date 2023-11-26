@@ -126,7 +126,16 @@
 .task-content__text::-webkit-scrollbar {
   display: none;
 }
-.task-content__about {
+
+.task-settings {
+  width: 100%;
 }
-.task-content__name {
+.settings__inner {
+  display: flex;
+  justify-content: end;
+  padding: 15px;
+  gap: 22px;
+}
+.settings__inner svg {
+  cursor: pointer;
 }

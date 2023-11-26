@@ -7,6 +7,7 @@ import { FormControl } from "@mui/material";
 import Button from "components/Button";
 import { useDispatch } from "react-redux";
 import { addTodo } from "store/slice/todos";
+import TodoDateCalendar from "components/TodoDateCalendar";
 
 const NewTask = ({ setOpen, open }) => {
   const { control, register, reset } = useForm();
@@ -17,7 +18,8 @@ const NewTask = ({ setOpen, open }) => {
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",
-      width: 400,
+      width: 350,
+      maxWidth: "100%",
       bgcolor: "background.paper",
       border: "2px solid #000",
       boxShadow: 24,
@@ -36,6 +38,14 @@ const NewTask = ({ setOpen, open }) => {
   };
   return (
     <Modal
+      // classes={}
+      sx={
+        {
+          // backdropFilter: "blur(5px)",
+          // maxWidth: "100%",
+          // width: 300,
+        }
+      }
       onClose={handleClose}
       open={open}
       aria-labelledby="modal-modal-title"
@@ -62,6 +72,9 @@ const NewTask = ({ setOpen, open }) => {
                 variant="standard"
                 {...register("description")}
               />
+            </FormControl>
+            <FormControl>
+              <TodoDateCalendar />
             </FormControl>
             <Button type="submit">Submit</Button>
           </Stack>
