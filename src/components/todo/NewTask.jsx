@@ -1,17 +1,28 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 
-import { Modal, Typography, Box, Stack } from "@mui/material";
+import {
+  Modal,
+  Typography,
+  Box,
+  Stack,
+  Select,
+  MenuItem,
+  InputLabel,
+  Button,
+} from "@mui/material";
 import { Form, useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import { FormControl } from "@mui/material";
-import Button from "components/Button";
+
 import { useDispatch } from "react-redux";
 import { addTodo } from "store/slice/todos";
 import TodoDateCalendar from "components/TodoDateCalendar";
+import { useAddTodoMutation } from "store/slice/todos/todosSlice";
 
 const NewTask = ({ setOpen, open }) => {
   const { control, register, reset } = useForm();
   const dispatch = useDispatch();
+  const [createTask, { isLoading: isLoadingCreateTask }] = useAddTodoMutation();
   const style = useMemo(() => {
     return {
       position: "absolute",
@@ -20,9 +31,11 @@ const NewTask = ({ setOpen, open }) => {
       transform: "translate(-50%, -50%)",
       width: 350,
       maxWidth: "100%",
-      bgcolor: "background.paper",
-      border: "2px solid #000",
+      bgcolor: "#2E2E2E",
+      border: "1px solid white",
       boxShadow: 24,
+      borderRadius: "20px",
+      color: "white",
       p: 4,
     };
   }, []);
@@ -32,20 +45,14 @@ const NewTask = ({ setOpen, open }) => {
     reset();
   };
   const handleSubmit = async (data) => {
-    dispatch(addTodo({ ...data.data }));
+    const task = await createTask(data.data).unwrap();
+    console.log(task);
+    dispatch(addTodo({ ...task }));
     reset();
     setOpen(false);
   };
   return (
     <Modal
-      // classes={}
-      sx={
-        {
-          // backdropFilter: "blur(5px)",
-          // maxWidth: "100%",
-          // width: 300,
-        }
-      }
       onClose={handleClose}
       open={open}
       aria-labelledby="modal-modal-title"
@@ -62,6 +69,7 @@ const NewTask = ({ setOpen, open }) => {
                 id="standard-basic"
                 label="Task name"
                 variant="standard"
+                InputLabelProps={{ sx: { color: "#B0B0B0" } }}
                 {...register("title")}
               />
             </FormControl>
@@ -70,13 +78,32 @@ const NewTask = ({ setOpen, open }) => {
                 id="standard-basic"
                 label="About task"
                 variant="standard"
+                InputLabelProps={{ sx: { color: "#B0B0B0" } }}
                 {...register("description")}
               />
+            </FormControl>
+            <FormControl sx={{ display: "flex", gap: "10px" }}>
+              <Typography>Categories</Typography>
+
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+              >
+                <MenuItem>Food</MenuItem>
+                <MenuItem>Animal</MenuItem>
+              </Select>
             </FormControl>
             <FormControl>
               <TodoDateCalendar />
             </FormControl>
-            <Button type="submit">Submit</Button>
+
+            <Button
+              type="submit"
+              variant="outlined"
+              sx={{ borderColor: "white", color: "white" }}
+            >
+              Create Task
+            </Button>
           </Stack>
         </Form>
       </Box>

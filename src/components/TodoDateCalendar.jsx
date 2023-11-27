@@ -7,12 +7,7 @@ const TodoDateCalendar = () => {
   console.log("ee");
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DateCalendar
-        sx={{ width: "100%" }}
-        slotProps={{
-          day: (ownerstate) => ({}),
-        }}
-      />
+      <DateCalendar sx={{ width: "100%" }} />
     </LocalizationProvider>
   );
 };

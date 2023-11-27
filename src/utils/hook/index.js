@@ -18,18 +18,5 @@ export const useAuth = () => {
   const [refreshToken] = useRefreshMutation();
   const dispatch = useDispatch();
 
-  // useLayoutEffect(() => {
-  //   const loadUser = async () => {
-  //     try {
-  //       const userToken = await refreshToken().unwrap();
-  //       dispatch(setCredentials({ ...userToken }));
-  //       console.log("PrvivateRoute data: ", userToken);
-  //     } catch (error) {
-  //       console.log("In useAuth: ", error);
-  //     }
-  //   };
-  //   if (!token && user) loadUser();
-  // }, []);
-
   return { user, token };
 };

@@ -20,7 +20,6 @@ const todosSlice = createSlice({
         category: action.payload.category && "",
         deadline: action.payload.deadline && "",
         completed: action.payload.completed && false,
-        userid: cookies.get("id"),
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
