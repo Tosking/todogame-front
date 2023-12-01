@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useId, useMemo, useState } from "react";
 
 import {
   Modal,
@@ -9,17 +9,22 @@ import {
   MenuItem,
   InputLabel,
   Button,
+  OutlinedInput,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { Form, useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import { FormControl } from "@mui/material";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "store/slice/todos";
 import TodoDateCalendar from "components/TodoDateCalendar";
 import { useAddTodoMutation } from "store/slice/todos/todosSlice";
+import { getCategories } from "store/slice/category";
 
 const NewTask = ({ setOpen, open }) => {
+  const categories = useSelector(getCategories);
+  const categoryID = useId();
   const { control, register, reset } = useForm();
   const dispatch = useDispatch();
   const [createTask, { isLoading: isLoadingCreateTask }] = useAddTodoMutation();
@@ -45,9 +50,9 @@ const NewTask = ({ setOpen, open }) => {
     reset();
   };
   const handleSubmit = async (data) => {
-    const task = await createTask(data.data).unwrap();
-    console.log(task);
-    dispatch(addTodo({ ...task }));
+    console.log(data.data);
+    // const task = await createTask(data.data).unwrap();
+    // dispatch(addTodo({ ...task }));
     reset();
     setOpen(false);
   };
@@ -59,6 +64,12 @@ const NewTask = ({ setOpen, open }) => {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
+        <div onClick={(e) => setOpen(false)}>
+          <CloseIcon
+            sx={{ position: "absolute", right: "32px", cursor: "pointer" }}
+          />
+        </div>
+
         <Typography id="modal-modal-title" variant="h6" component="h2">
           New Task
         </Typography>
@@ -85,16 +96,26 @@ const NewTask = ({ setOpen, open }) => {
             <FormControl sx={{ display: "flex", gap: "10px" }}>
               <Typography>Categories</Typography>
 
-              <Select
-                labelId="demo-simple-select-helper-label"
-                id="demo-simple-select-helper"
-              >
-                <MenuItem>Food</MenuItem>
-                <MenuItem>Animal</MenuItem>
-              </Select>
+              <Box>
+                <TextField
+                  select={categories.length > 1 ? true : false}
+                  id="outlined-read-only-input"
+                  inputProps={{
+                    readOnly: true,
+                  }}
+                  defaultValue="Create categories"
+                  fullWidth
+                  {...register("category")}
+                >
+                  {categories.map((value) => (
+                    <MenuItem key={categoryID}>{value.title}</MenuItem>
+                  ))}
+                </TextField>
+              </Box>
             </FormControl>
+
             <FormControl>
-              <TodoDateCalendar />
+              <TodoDateCalendar register={register} />
             </FormControl>
 
             <Button

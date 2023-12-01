@@ -3,15 +3,16 @@ import Header from "components/Header";
 import MainContent from "components/Maincontent";
 import Button from "components/Button";
 
-import "styleComponents/MainPage.css";
-import "styleComponents/Main.css";
 import { ReactComponent as Account } from "images/account.svg";
 import { ReactComponent as Search } from "images/search.svg";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "store/slice/auth";
 import NewTask from "components/todo/NewTask";
 import TodoList from "components/todo/TodoList";
+import Categories from "components/category/Categories";
 
+import "styleComponents/MainPage.css";
+import "styleComponents/Main.css";
 const Main = () => {
   const user = useSelector(selectCurrentUser);
   const [open, setOpen] = useState(false);
@@ -35,15 +36,7 @@ const Main = () => {
           <h1 className="content-header content-header_gradient">
             {"Hello," + user}
           </h1>
-          <div className="categories">
-            <div className="section-name">Categories</div>
-            <div className="categories__inner">
-              <Button buttonClassName={"category__button"}>
-                <div className="category-button__header">{"lol"}</div>
-                <div className="category-button__inner">{"kek"}</div>
-              </Button>
-            </div>
-          </div>
+          <Categories />
           <TodoList />
 
           <NewTask setOpen={setOpen} open={open} />

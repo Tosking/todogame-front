@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.11.0",
     "@mantine/core": "^7.1.2",
     "@mantine/hooks": "^7.1.2",
+    "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.17",
     "@mui/styled-engine-sc": "^6.0.0-alpha.5",
     "@mui/x-date-pickers": "^6.18.2",
