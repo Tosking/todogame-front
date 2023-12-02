@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Cookies from "universal-cookie";
-const cookies = new Cookies();
 
 const cacheTodos = JSON.parse(localStorage.getItem("todos"));
 console.log(cacheTodos);
@@ -12,7 +10,7 @@ const todosSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      console.log(action);
+      console.log(action.payload);
       state.todos.push({
         id: action.payload.id,
         title: action.payload.title,

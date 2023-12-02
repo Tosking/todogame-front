@@ -1,13 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const cacheCategories = JSON.parse(localStorage.getItem("categories"));
+
 const initialState = {
-  categories: [
-    {
-      id: null,
-      title: "",
-      description: "",
-    },
-  ],
+  categories: cacheCategories || [],
 };
 
 const categorySlice = createSlice({
@@ -32,6 +28,5 @@ const categorySlice = createSlice({
 });
 
 export const getCategories = (state) => state.categories.categories;
-export const { createCategory, deleteCategory, toggleTodo } =
-  categorySlice.actions;
+export const { createCategory, deleteCategory } = categorySlice.actions;
 export default categorySlice.reducer;

@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useId } from "react";
 import Button from "components/Button";
-const Category = ({ title, description }) => {
+
+const Category = ({ title, description, onClick, children }) => {
   return (
-    <Button buttonClassName={"category__button"}>
-      <div className="category-button__header">{title}</div>
-      <div className="category-button__inner">{description}</div>
+    <Button buttonClassName={"category__button"} onClick={onClick}>
+      {children ? (
+        children
+      ) : (
+        <>
+          <div className="category-button__header">{title}</div>
+          <div className="category-button__inner">{description}</div>
+        </>
+      )}
     </Button>
   );
 };

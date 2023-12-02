@@ -9,9 +9,9 @@ const TodoList = () => {
   return (
     <div className="tasks">
       <div className="section-name">Tasks</div>
-      {todos.map((value) => {
+      {todos.map((value, index) => {
         return (
-          <Task key={taskId} title={value.title}>
+          <Task key={`${taskId}-${index}`} title={value.title}>
             {value.description}
           </Task>
         );

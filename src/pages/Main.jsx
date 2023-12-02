@@ -13,6 +13,7 @@ import Categories from "components/category/Categories";
 
 import "styleComponents/MainPage.css";
 import "styleComponents/Main.css";
+import CreateCategory from "components/category/CreateCategory";
 const Main = () => {
   const user = useSelector(selectCurrentUser);
   const [open, setOpen] = useState(false);
@@ -37,6 +38,7 @@ const Main = () => {
             {"Hello," + user}
           </h1>
           <Categories />
+
           <TodoList />
 
           <NewTask setOpen={setOpen} open={open} />

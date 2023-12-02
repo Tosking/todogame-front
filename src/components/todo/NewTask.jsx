@@ -12,7 +12,7 @@ import {
   OutlinedInput,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Form, useForm } from "react-hook-form";
+import { Controller, Form, useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import { FormControl } from "@mui/material";
 
@@ -51,8 +51,14 @@ const NewTask = ({ setOpen, open }) => {
   };
   const handleSubmit = async (data) => {
     console.log(data.data);
-    // const task = await createTask(data.data).unwrap();
-    // dispatch(addTodo({ ...task }));
+    let id;
+    if (data.data.category) {
+      id = categories.find((el) => el.title === data.data.category).id;
+      data.data.category = id;
+    }
+
+    const task = await createTask(data.data).unwrap();
+    dispatch(addTodo({ ...task }));
     reset();
     setOpen(false);
   };
@@ -98,18 +104,26 @@ const NewTask = ({ setOpen, open }) => {
 
               <Box>
                 <TextField
-                  select={categories.length > 1 ? true : false}
+                  select={categories.length > 0 ? true : false}
                   id="outlined-read-only-input"
                   inputProps={{
-                    readOnly: true,
+                    readOnly: categories.length > 0 ? false : true,
                   }}
-                  defaultValue="Create categories"
+                  value={"Create categories"}
                   fullWidth
+                  name="category"
                   {...register("category")}
                 >
-                  {categories.map((value) => (
-                    <MenuItem key={categoryID}>{value.title}</MenuItem>
-                  ))}
+                  {categories.map((value, index) => {
+                    return (
+                      <MenuItem
+                        key={`${categoryID}-${index}`}
+                        value={value.title}
+                      >
+                        {value.title}
+                      </MenuItem>
+                    );
+                  })}
                 </TextField>
               </Box>
             </FormControl>
