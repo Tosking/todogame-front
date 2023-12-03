@@ -50,13 +50,6 @@ const NewTask = ({ setOpen, open }) => {
     reset();
   };
   const handleSubmit = async (data) => {
-    console.log(data.data);
-    let id;
-    if (data.data.category) {
-      id = categories.find((el) => el.title === data.data.category).id;
-      data.data.category = id;
-    }
-
     const task = await createTask(data.data).unwrap();
     dispatch(addTodo({ ...task }));
     reset();
@@ -109,17 +102,15 @@ const NewTask = ({ setOpen, open }) => {
                   inputProps={{
                     readOnly: categories.length > 0 ? false : true,
                   }}
-                  value={"Create categories"}
+                  placeholder="Create a category"
+                  defaultValue={""}
                   fullWidth
                   name="category"
                   {...register("category")}
                 >
                   {categories.map((value, index) => {
                     return (
-                      <MenuItem
-                        key={`${categoryID}-${index}`}
-                        value={value.title}
-                      >
+                      <MenuItem key={`${categoryID}-${index}`} value={value.id}>
                         {value.title}
                       </MenuItem>
                     );

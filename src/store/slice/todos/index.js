@@ -15,9 +15,9 @@ const todosSlice = createSlice({
         id: action.payload.id,
         title: action.payload.title,
         description: action.payload.description,
-        category: action.payload.category && "",
-        deadline: action.payload.deadline && "",
-        completed: action.payload.completed && false,
+        category: action.payload.category || "",
+        deadline: action.payload.deadline || "",
+        completed: action.payload.completed || false,
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
