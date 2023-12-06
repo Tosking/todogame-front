@@ -23,7 +23,9 @@ const todosSlice = createSlice({
     },
     removeTodo: (state, action) => {
       const { id } = action.payload;
-      state.todos = state.todos.filter((task) => task.id !== id);
+      console.log("ID in action", id);
+      state.todos = state.todos.filter((task) => +task.id !== id);
+      console.log(state.todos);
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     toggleTodo: (state, action) => {

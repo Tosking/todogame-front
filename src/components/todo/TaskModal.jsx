@@ -1,18 +1,9 @@
-import React, { useId, useMemo, useState } from "react";
+import ModalContext from "contexts/ModalContext";
+import React, { useId, useContext } from "react";
 
-import {
-  Modal,
-  Typography,
-  Box,
-  Stack,
-  Select,
-  MenuItem,
-  InputLabel,
-  Button,
-  OutlinedInput,
-} from "@mui/material";
+import { Typography, Box, Stack, MenuItem, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Controller, Form, useForm } from "react-hook-form";
+import { Form, useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import { FormControl } from "@mui/material";
 
@@ -21,57 +12,30 @@ import { addTodo } from "store/slice/todos";
 import TodoDateCalendar from "components/TodoDateCalendar";
 import { useAddTodoMutation } from "store/slice/todos/todosSlice";
 import { getCategories } from "store/slice/category";
+import CustomButton from "components/Button";
 
-const NewTask = ({ setOpen, open }) => {
+const TaskModal = () => {
+  const { openModal, closeModal } = useContext(ModalContext);
   const categories = useSelector(getCategories);
   const categoryID = useId();
   const { control, register, reset } = useForm();
   const dispatch = useDispatch();
   const [createTask, { isLoading: isLoadingCreateTask }] = useAddTodoMutation();
-  const style = useMemo(() => {
-    return {
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      width: 350,
-      maxWidth: "100%",
-      bgcolor: "#2E2E2E",
-      border: "1px solid white",
-      boxShadow: 24,
-      borderRadius: "20px",
-      color: "white",
-      p: 4,
-    };
-  }, []);
-
-  const handleClose = () => {
-    setOpen(false);
-    reset();
-  };
-  const handleSubmit = async (data) => {
-    const task = await createTask(data.data).unwrap();
-    dispatch(addTodo({ ...task }));
-    reset();
-    setOpen(false);
-  };
-  return (
-    <Modal
-      onClose={handleClose}
-      open={open}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={style}>
-        <div onClick={(e) => setOpen(false)}>
-          <CloseIcon
-            sx={{ position: "absolute", right: "32px", cursor: "pointer" }}
-          />
-        </div>
-
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          New Task
-        </Typography>
+  const handleOpen = () => {
+    openModal({
+      title: (
+        <>
+          <div onClick={(e) => closeModal()}>
+            <CloseIcon
+              sx={{ position: "absolute", right: "32px", cursor: "pointer" }}
+            />
+          </div>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            New Task
+          </Typography>
+        </>
+      ),
+      children: (
         <Form control={control} onSubmit={handleSubmit}>
           <Stack spacing={3}>
             <FormControl>
@@ -132,9 +96,20 @@ const NewTask = ({ setOpen, open }) => {
             </Button>
           </Stack>
         </Form>
-      </Box>
-    </Modal>
+      ),
+    });
+  };
+  const handleSubmit = async (data) => {
+    const task = await createTask(data.data).unwrap();
+    dispatch(addTodo({ ...task }));
+    reset();
+    closeModal();
+  };
+  return (
+    <CustomButton onClick={handleOpen} buttonClassName={"content-create-task"}>
+      <span></span>
+      <span></span>
+    </CustomButton>
   );
 };
-
-export default NewTask;
+export default TaskModal;

@@ -12,7 +12,7 @@ export const todosApiSlice = apiSlice.injectEndpoints({
     removeTodo: builder.mutation({
       query: (credentials) => ({
         url: "/task/delete",
-        method: "DELETE",
+        method: "POST",
         body: { ...credentials },
       }),
     }),

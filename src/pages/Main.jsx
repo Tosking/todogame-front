@@ -7,17 +7,15 @@ import { ReactComponent as Account } from "images/account.svg";
 import { ReactComponent as Search } from "images/search.svg";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "store/slice/auth";
-import NewTask from "components/todo/NewTask";
 import TodoList from "components/todo/TodoList";
 import Categories from "components/category/Categories";
 
 import "styleComponents/MainPage.css";
 import "styleComponents/Main.css";
-import CreateCategory from "components/category/CreateCategory";
+import TaskModal from "components/todo/TaskModal";
 const Main = () => {
   const user = useSelector(selectCurrentUser);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+
   return (
     <div className="main-page">
       <div className={"main-page__inner container"}>
@@ -38,14 +36,8 @@ const Main = () => {
             {"Hello," + user}
           </h1>
           <Categories />
-
           <TodoList />
-
-          <NewTask setOpen={setOpen} open={open} />
-          <Button onClick={handleOpen} buttonClassName={"content-create-task"}>
-            <span></span>
-            <span></span>
-          </Button>
+          <TaskModal />
         </MainContent>
       </div>
     </div>

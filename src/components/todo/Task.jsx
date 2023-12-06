@@ -2,15 +2,26 @@ import React, { useState } from "react";
 import { Checkbox } from "pretty-checkbox-react";
 import "pretty-checkbox/dist/pretty-checkbox.css";
 import "styleComponents/Subtask.css";
-import { ReactComponent as EditTask } from "images/edittask.svg";
 import { ReactComponent as Add } from "images/add.svg";
 import { ReactComponent as Remove } from "images/remove.svg";
+import { useRemoveTodoMutation } from "store/slice/todos/todosSlice";
+import { useDispatch } from "react-redux";
+import { removeTodo } from "store/slice/todos";
+import EditTask from "./taskSettings/EditTask";
 
-const Task = ({ children, title }) => {
+const btnStyle = {
+  backgroundColor: "transparent",
+};
+const Task = ({ children, title, idTask }) => {
   const [open, setOpen] = useState(false);
-
+  const [deleteTask, isLoading] = useRemoveTodoMutation();
+  const dispatch = useDispatch();
   const setVisibleInfoTask = () => {
     setOpen((value) => !value);
+  };
+  const senddeleteTask = async (e) => {
+    const id = await deleteTask({ id: idTask }).unwrap();
+    dispatch(removeTodo({ id }));
   };
   return (
     <div className="task">
@@ -72,8 +83,12 @@ const Task = ({ children, title }) => {
           <div className="task-settings">
             <div className="settings__inner">
               <EditTask />
-              <Add />
-              <Remove />
+              <button style={btnStyle}>
+                <Add />
+              </button>
+              <button style={btnStyle} onClick={senddeleteTask}>
+                <Remove />
+              </button>
             </div>
           </div>
         </>

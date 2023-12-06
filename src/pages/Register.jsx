@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Input from "components/Input";
-import Button from "components/Button";
+import CustomButton from "components/Button";
 import { Link } from "react-router-dom";
 import Form from "components/Form";
 import Header from "components/Header";
@@ -84,13 +84,13 @@ const Register = ({ register, sendData, errors, loading, isValid, watch }) => {
             {errors.repeatPassword && (
               <h1 className="error">{errors.repeatPassword.message}</h1>
             )}
-            <Button
+            <CustomButton
               isValid={isValid}
               typeBtn={"submit"}
               buttonClassName="authtorization-form__button"
             >
               {loading ? <MoonLoader size={20} /> : "Create an account"}
-            </Button>
+            </CustomButton>
             <div className="route">
               <span className="route__member">
                 Are you a member?{" "}

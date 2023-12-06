@@ -1,6 +1,12 @@
 import React from "react";
 
-const Button = ({ buttonClassName, children, onClick, typeBtn, isValid }) => {
+const CustomButton = ({
+  buttonClassName,
+  children,
+  onClick,
+  typeBtn,
+  isValid,
+}) => {
   return (
     <button
       disabled={!isValid && isValid !== undefined}
@@ -13,4 +19,4 @@ const Button = ({ buttonClassName, children, onClick, typeBtn, isValid }) => {
   );
 };
 
-export default Button;
+export default CustomButton;

@@ -2,7 +2,7 @@ import React from "react";
 import Header from "components/Header";
 import Form from "components/Form";
 import Input from "components/Input";
-import Button from "components/Button";
+import CustomButton from "components/Button";
 import MainContent from "components/Maincontent";
 import { Link } from "react-router-dom";
 import "styleComponents/Authtorization.css";
@@ -23,10 +23,10 @@ const Login = ({ login, sendData, errors, loading, isValid, watch }) => {
 
         <Form className="form form__login" onSubmit={sendData}>
           <div className="authtorization-form container">
-            <Button buttonClassName="authtorization-form__button button-google">
+            <CustomButton buttonClassName="authtorization-form__button button-google">
               <img src={google} alt="#" />
               <span>Continue with Google</span>
-            </Button>
+            </CustomButton>
 
             <Input
               typeInput="text"
@@ -60,13 +60,13 @@ const Login = ({ login, sendData, errors, loading, isValid, watch }) => {
             <div className="login-form__forget">
               <Link>Forget Password?</Link>
             </div>
-            <Button
+            <CustomButton
               isValid={isValid}
               typeBtn={"submit"}
               buttonClassName="authtorization-form__button"
             >
               {loading ? <MoonLoader size={20} /> : "Sign In"}
-            </Button>
+            </CustomButton>
             <div className="route">
               <span className="route__member">
                 Not a member?{" "}

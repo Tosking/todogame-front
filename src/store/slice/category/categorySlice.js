@@ -9,10 +9,10 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
         body: { ...credentials },
       }),
     }),
-    removeTodo: builder.mutation({
+    removeCategory: builder.mutation({
       query: (credentials) => ({
         url: "/category/delete",
-        method: "DELETE",
+        method: "POST",
         body: { ...credentials },
       }),
     }),
@@ -34,7 +34,7 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useCreateCategoryMutation,
-  useRemoveTodoMutation,
+  useRemoveCategoryMutation,
   useChangeCategoryMutation,
   useGetCategoryMutation,
 } = categoryApiSlice;

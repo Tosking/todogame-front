@@ -7,7 +7,6 @@ const TodoDateCalendar = ({ register }) => {
   const [value, setValue] = useState();
   const handleChange = (data) => {
     console.log(data);
-
     setValue(data);
   };
   return (
