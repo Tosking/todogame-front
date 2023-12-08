@@ -23,11 +23,26 @@ export const todosApiSlice = apiSlice.injectEndpoints({
         body: { ...credentials },
       }),
     }),
+    getTodos: builder.mutation({
+      query: () => ({
+        url: "/get/list",
+        method: "GET",
+      }),
+    }),
+    changeTask: builder.mutation({
+      query: (credentials) => ({
+        url: "/task/change",
+        method: "POST",
+        body: { ...credentials },
+      }),
+    }),
   }),
 });
 
 export const {
   useAddTodoMutation,
   useRemoveTodoMutation,
+  useChangeTaskMutation,
+  useGetTodosMutation,
   useToggleTodoMutation,
 } = todosApiSlice;

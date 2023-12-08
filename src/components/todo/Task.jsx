@@ -82,7 +82,7 @@ const Task = ({ children, title, idTask }) => {
 
           <div className="task-settings">
             <div className="settings__inner">
-              <EditTask />
+              <EditTask id={idTask} />
               <button style={btnStyle}>
                 <Add />
               </button>

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "components/Header";
 import MainContent from "components/Maincontent";
 import Button from "components/Button";
 
 import { ReactComponent as Account } from "images/account.svg";
 import { ReactComponent as Search } from "images/search.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "store/slice/auth";
 import TodoList from "components/todo/TodoList";
 import Categories from "components/category/Categories";
@@ -13,9 +13,28 @@ import Categories from "components/category/Categories";
 import "styleComponents/MainPage.css";
 import "styleComponents/Main.css";
 import TaskModal from "components/todo/TaskModal";
+import { getTodos } from "store/slice/todos";
+import { useGetTodosMutation } from "store/slice/todos/todosSlice";
+import { setTodos } from "store/slice/todos";
+import { setCategories } from "store/slice/category";
+
 const Main = () => {
   const user = useSelector(selectCurrentUser);
+  const [getTodoss, isLoading] = useGetTodosMutation();
+  const dispatch = useDispatch();
+  const todos = dispatch(getTodos);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const getTodosFromServer = await getTodoss().unwrap();
+        dispatch(setTodos(getTodosFromServer));
+        dispatch(setCategories(getTodosFromServer));
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [todos]);
   return (
     <div className="main-page">
       <div className={"main-page__inner container"}>

@@ -24,9 +24,15 @@ const categorySlice = createSlice({
       state.categories.filter((category) => category.id !== id);
       localStorage.setItem("categories", JSON.stringify(state.categories));
     },
+    setCategories: (state, action) => {
+      const { categories } = action.payload;
+      state.categories = categories;
+      localStorage.setItem("categories", JSON.stringify(state.categories));
+    },
   },
 });
 
 export const getCategories = (state) => state.categories.categories;
-export const { createCategory, deleteCategory } = categorySlice.actions;
+export const { createCategory, deleteCategory, setCategories } =
+  categorySlice.actions;
 export default categorySlice.reducer;

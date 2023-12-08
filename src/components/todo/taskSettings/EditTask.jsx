@@ -9,10 +9,23 @@ import {
   Button,
 } from "@mui/material";
 import { Form, useForm } from "react-hook-form";
+import { useChangeTaskMutation } from "store/slice/todos/todosSlice";
+import { useDispatch } from "react-redux";
+import { changeTask } from "store/slice/todos";
 
-const EditTask = () => {
+const EditTask = ({ id }) => {
   const { openModal, closeModal } = useContext(ModalContext);
   const { control, register, reset } = useForm();
+  const [changeTaskReq, isLoading] = useChangeTaskMutation();
+  const dispatch = useDispatch();
+  const handleSubmit = async (data) => {
+    const obj = { id, ...data.data };
+
+    const updateTask = await changeTaskReq(obj).unwrap();
+
+    dispatch(changeTask(updateTask));
+    closeModal();
+  };
   const hadnelOpen = () => {
     openModal({
       title: (
@@ -21,13 +34,14 @@ const EditTask = () => {
         </Typography>
       ),
       children: (
-        <Form control={control}>
+        <Form control={control} onSubmit={handleSubmit}>
           <Stack spacing={3}>
             <FormControl>
               <TextField
                 label="New Title"
                 variant="standard"
                 id="standard-basic"
+                {...register("title")}
               ></TextField>
             </FormControl>
             <FormControl>
@@ -35,6 +49,7 @@ const EditTask = () => {
                 label="New Description"
                 variant="standard"
                 id="standard-basic"
+                {...register("description")}
               ></TextField>
             </FormControl>
             <Button

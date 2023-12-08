@@ -34,10 +34,22 @@ const todosSlice = createSlice({
       toggleTodo.completed = !toggleTodo.completed;
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
+    setTodos: (state, action) => {
+      const { tasks } = action.payload;
+      state.todos = tasks;
+      localStorage.setItem("todos", JSON.stringify(state.todos));
+    },
+    changeTask: (state, action) => {
+      const { id } = action.payload;
+      let changeTaskIndex = state.todos.findIndex((value) => value.id === id);
+      state.todos[changeTaskIndex] = action.payload;
+      localStorage.setItem("todos", JSON.stringify(state.todos));
+    },
   },
 });
 
-export const getTodos = (state) => state.todos.todos;
+export const getTodos = (state) => state.todos?.todos;
 
-export const { addTodo, removeTodo, toggleTodo } = todosSlice.actions;
+export const { addTodo, removeTodo, toggleTodo, setTodos, changeTask } =
+  todosSlice.actions;
 export default todosSlice.reducer;
