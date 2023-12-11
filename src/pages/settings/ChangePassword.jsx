@@ -1,13 +1,31 @@
-import React from 'react';
-import Header from 'components/Header';
+import React from "react";
 
-const ChangePassword = () => {
-	return (
-		<div className='App'>
-			<Header to={"/settings"}/>
-			Change Password
-		</div>
-	);
-}
+import { Form } from "react-hook-form";
+import { Stack, FormControl, TextField, Button } from "@mui/material";
+const ChangePassword = ({ register, control }) => {
+  return (
+    <Form control={control}>
+      <Stack gap={3}>
+        <FormControl>
+          <TextField
+            id="standard-basic"
+            label="New password"
+            variant="standard"
+          />
+        </FormControl>
+        <FormControl>
+          <TextField
+            id="standard-basic"
+            label="Repeat new password"
+            variant="standard"
+          />
+        </FormControl>
+        <Button type="submit" variant="outlined">
+          Complete
+        </Button>
+      </Stack>
+    </Form>
+  );
+};
 
 export default ChangePassword;

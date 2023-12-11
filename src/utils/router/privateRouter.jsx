@@ -1,4 +1,3 @@
-import Loader from "components/loader/Loader";
 import React, { useEffect } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { setCredentials } from "store/slice/auth";

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "components/Header";
 import MainContent from "components/Maincontent";
 import Button from "components/Button";
 
 import { ReactComponent as Account } from "images/account.svg";
 import { ReactComponent as Search } from "images/search.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentUser } from "store/slice/auth";
+import { useDispatch } from "react-redux";
+
 import TodoList from "components/todo/TodoList";
 import Categories from "components/category/Categories";
 
@@ -17,24 +17,27 @@ import { getTodos } from "store/slice/todos";
 import { useGetTodosMutation } from "store/slice/todos/todosSlice";
 import { setTodos } from "store/slice/todos";
 import { setCategories } from "store/slice/category";
+import { useAuth } from "utils/hook";
+import Loader from "components/loader/Loader";
 
 const Main = () => {
-  const user = useSelector(selectCurrentUser);
   const [getTodoss, isLoading] = useGetTodosMutation();
   const dispatch = useDispatch();
   const todos = dispatch(getTodos);
-
+  const { token, user } = useAuth();
   useEffect(() => {
     (async () => {
       try {
-        const getTodosFromServer = await getTodoss().unwrap();
-        dispatch(setTodos(getTodosFromServer));
-        dispatch(setCategories(getTodosFromServer));
+        if (!todos) {
+          const getTodosFromServer = await getTodoss().unwrap();
+          dispatch(setTodos(getTodosFromServer));
+          dispatch(setCategories(getTodosFromServer));
+        }
       } catch (err) {
         console.log(err);
       }
     })();
-  }, [todos]);
+  }, [todos, token]);
   return (
     <div className="main-page">
       <div className={"main-page__inner container"}>
@@ -54,9 +57,15 @@ const Main = () => {
           <h1 className="content-header content-header_gradient">
             {"Hello," + user}
           </h1>
-          <Categories />
-          <TodoList />
-          <TaskModal />
+          {!isLoading.isLoading ? (
+            <>
+              <Categories />
+              <TodoList />
+              <TaskModal />
+            </>
+          ) : (
+            <Loader />
+          )}
         </MainContent>
       </div>
     </div>

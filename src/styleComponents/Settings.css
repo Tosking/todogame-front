@@ -1,66 +1,88 @@
 /* Main Settings */
-.settings-cell{
-	display: flex;
-	margin-top: 50px;
-	justify-content: space-between;
+.settings-cell {
+  display: flex;
+  margin-top: 50px;
+  text-align: left;
 }
 
-.settings-content .content__inner{
-	padding: 0 23px;
+.settings-content .content__inner {
+  padding: 0 23px;
 }
-
-.settings-word{
-	font-size: 24px;
-	background: none;
-	width: 100%;
-	background: none;
-	color: #FFFFFF;
+.theme-content__inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-
+.theme-content-title {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.settings-word {
+  font-size: 24px;
+  background: none;
+  width: 100%;
+  background: none;
+  color: #ffffff;
+}
 
 /* Choose Theme */
-.theme-content{
-	display: flex;
-	margin-top: 50px;
-	justify-content: space-between;
+.theme-content {
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-between;
 }
 
-.settings-theme-content{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px 0;
+.settings-theme-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
-.settings-theme-name{
-	font-size: 24px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	color: #FFFFFF;
+.settings-theme-name {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #ffffff;
 }
 
-.settings-theme-swtich{
-	padding-top: 7px;
-	font-size: 24px;
+.settings-theme-swtich {
+  padding-top: 7px;
+  font-size: 24px;
 }
 
-.settings-theme-color{
-	padding-top: 29px;
+.settings-theme-color {
+  padding-top: 29px;
 }
 
-.settings-theme-nColor{
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 13px;
-	color: #FFFFFF;
+.settings-theme-nColor {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 13px;
+  color: #ffffff;
 }
 
-.settings-theme-selectName{
-	font-size: 24px;
-	background: none;
-	width: 100%;
-	background: none;
+.settings-theme-selectName {
+  font-size: 24px;
+  background: none;
+  width: 100%;
+  background: none;
+}
+.theme-content__colors {
+  width: 100%;
+}
+.colors__inner {
+  display: flex;
+  flex-direction: column;
+  padding: 0 17px;
+  gap: 40px;
+}
+.colors-row {
+  display: flex;
+  justify-content: space-between;
 }

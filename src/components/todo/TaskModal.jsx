@@ -63,9 +63,15 @@ const TaskModal = () => {
                 <TextField
                   select={categories.length > 0 ? true : false}
                   id="outlined-read-only-input"
+                  SelectProps={{ sx: { color: "white" } }}
                   inputProps={{
                     readOnly: categories.length > 0 ? false : true,
                   }}
+                  sx={{
+                    border: "1px solid white",
+                    borderRadius: "5px",
+                  }}
+                  variant="outlined"
                   placeholder="Create a category"
                   defaultValue={""}
                   fullWidth
