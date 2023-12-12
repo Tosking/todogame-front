@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Controller } from "react-hook-form";
 /*Разобраться с окрашиванием выбранного дня*/
-const TodoDateCalendar = ({ register }) => {
-  const [value, setValue] = useState();
-  const handleChange = (data) => {
-    console.log(data);
-    setValue(data);
-  };
+const TodoDateCalendar = ({ register, control }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DateCalendar sx={{ width: "100%" }} />
+      <Controller
+        control={control}
+        name="deadline"
+        render={({ field }) => (
+          <DateCalendar
+            sx={{ width: "100%" }}
+            onChange={(date) => field.onChange(date)}
+            selected={field.value}
+          />
+        )}
+      />
     </LocalizationProvider>
   );
 };

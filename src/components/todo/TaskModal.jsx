@@ -90,7 +90,7 @@ const TaskModal = () => {
             </FormControl>
 
             <FormControl>
-              <TodoDateCalendar register={register} />
+              <TodoDateCalendar control={control} />
             </FormControl>
 
             <Button
