@@ -18,36 +18,31 @@ import PublicRoute from "utils/router/publicRouter";
 import ModalContextProvider from "contexts/ModalContextProvider";
 const App = () => {
   return (
-    <ModalContextProvider>
-      <div className="App">
-        <Routes>
-          {/* Public routes */}
-          <Route element={<PublicRoute />}>
-            <Route path="/auth/signup" element={<AuthRootComponent />}></Route>
-            <Route path="/auth/signin" element={<AuthRootComponent />}></Route>
-          </Route>
-          {/* Private routes */}
+    <div className="App">
+      <Routes>
+        {/* Public routes */}
+        <Route element={<PublicRoute />}>
+          <Route path="/auth/signup" element={<AuthRootComponent />}></Route>
+          <Route path="/auth/signin" element={<AuthRootComponent />}></Route>
+        </Route>
+        {/* Private routes */}
 
-          <Route element={<PrivateRoute />}>
-            <Route path="/" element={<Main />}></Route>
-            <Route path="/main" element={<Main />}></Route>
-            <Route path="/settings" element={<Settings />}></Route>
-            <Route path="/settingsEditName" element={<EditName />}></Route>
-            <Route
-              path="/settingsChangeEmail"
-              element={<ChangeEmail />}
-            ></Route>
-            <Route
-              path="/settingsChangePassword"
-              element={<ChangePassword />}
-            ></Route>
-            <Route path="/settingsTheme" element={<ChooseTheme />}></Route>
-          </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="/main" element={<Main />}></Route>
+          <Route path="/settings" element={<Settings />}></Route>
+          <Route path="/settingsEditName" element={<EditName />}></Route>
+          <Route path="/settingsChangeEmail" element={<ChangeEmail />}></Route>
+          <Route
+            path="/settingsChangePassword"
+            element={<ChangePassword />}
+          ></Route>
+          <Route path="/settingsTheme" element={<ChooseTheme />}></Route>
+        </Route>
 
-          <Route path="*" element={<NotFoundPage />}></Route>
-        </Routes>
-      </div>
-    </ModalContextProvider>
+        <Route path="*" element={<NotFoundPage />}></Route>
+      </Routes>
+    </div>
   );
 };
 

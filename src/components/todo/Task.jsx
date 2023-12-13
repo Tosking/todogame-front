@@ -8,7 +8,9 @@ import { useRemoveTodoMutation } from "store/slice/todos/todosSlice";
 import { useDispatch } from "react-redux";
 import { removeTodo } from "store/slice/todos";
 import EditTask from "./taskSettings/EditTask";
-
+import MuiCheckbox from "@mui/material/Checkbox";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { RadioButtonUnchecked } from "@mui/icons-material";
 const btnStyle = {
   backgroundColor: "transparent",
 };
@@ -31,14 +33,11 @@ const Task = ({ children, title, idTask }) => {
   return (
     <div className="task">
       <div className="task__inner">
-        <Checkbox
-          style={{ fontSize: "30px", marginRight: "10px" }}
-          shape="round"
-          color="success"
-          animation="pulse"
-          state={checked}
-          setState={setChecked}
-          onChange={onChange}
+        <MuiCheckbox
+          icon={<RadioButtonUnchecked />}
+          checkedIcon={<CheckCircleOutlineIcon />}
+          size="large"
+          sx={{ padding: "0 10px 0 0" }}
         />
         <div className="task__content" onClick={setVisibleInfoTask}>
           <div className="task-content__text">
@@ -55,6 +54,7 @@ const Task = ({ children, title, idTask }) => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
+            className="test"
             d="M22 10C22 10 17.56 18 14.5 18C11.4411 18 7 10 7 10"
             stroke="white"
             strokeWidth="1.5"

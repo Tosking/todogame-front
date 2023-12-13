@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import ModalContext from "./ModalContext";
 import CustomModal from "components/customModal/CustomModal";
+
 const ModalContextProvider = ({ children }) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
   const openModal = (modalConfig) => {
+    console.log("Work");
     setModalContent(modalConfig);
     setModalOpened(true);
   };
@@ -13,6 +15,7 @@ const ModalContextProvider = ({ children }) => {
   const closeModal = () => {
     setModalOpened(false);
   };
+
   const valueModalProvider = {
     openModal,
     closeModal,

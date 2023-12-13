@@ -1,5 +1,5 @@
 import ModalContext from "contexts/ModalContext";
-import React, { useId, useContext } from "react";
+import React, { useId, useContext, useState, createRef } from "react";
 
 import { Typography, Box, Stack, MenuItem, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -13,14 +13,29 @@ import TodoDateCalendar from "components/TodoDateCalendar";
 import { useAddTodoMutation } from "store/slice/todos/todosSlice";
 import { getCategories } from "store/slice/category";
 import CustomButton from "components/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import { ErrorMessage } from "@hookform/error-message";
+const useStyles = makeStyles((theme) => ({
+  menuPaper: {
+    maxHeight: 200,
+  },
+}));
 
 const TaskModal = () => {
-  const { openModal, closeModal } = useContext(ModalContext);
+  const classes = useStyles();
+  const { openModal, closeModal, updateModal } = useContext(ModalContext);
   const categories = useSelector(getCategories);
   const categoryID = useId();
-  const { control, register, reset } = useForm();
+  const {
+    register,
+    formState: { errors },
+    control,
+    reset,
+    handleSubmit,
+  } = useForm({ mode: "onChange" });
   const dispatch = useDispatch();
   const [createTask, { isLoading: isLoadingCreateTask }] = useAddTodoMutation();
+  console.log(errors);
   const handleOpen = () => {
     openModal({
       title: (
@@ -36,7 +51,7 @@ const TaskModal = () => {
         </>
       ),
       children: (
-        <Form control={control} onSubmit={handleSubmit}>
+        <Form control={control} onSubmit={handleSubmit(handleSubmitt)}>
           <Stack spacing={3}>
             <FormControl>
               <TextField
@@ -44,9 +59,14 @@ const TaskModal = () => {
                 label="Task name"
                 variant="standard"
                 InputLabelProps={{ sx: { color: "#B0B0B0" } }}
-                {...register("title")}
+                {...register("title", {
+                  required: { value: true, message: "This field is required" },
+                })}
               />
+
+              {errors.title && <h1>{errors.title?.message}</h1>}
             </FormControl>
+
             <FormControl>
               <TextField
                 id="standard-basic"
@@ -62,8 +82,11 @@ const TaskModal = () => {
               <Box>
                 <TextField
                   select={categories.length > 0 ? true : false}
-                  id="outlined-read-only-input"
-                  SelectProps={{ sx: { color: "white" } }}
+                  id="outlined-select-currency"
+                  SelectProps={{
+                    sx: { color: "white" },
+                    MenuProps: { classes: { paper: classes.menuPaper } },
+                  }}
                   inputProps={{
                     readOnly: categories.length > 0 ? false : true,
                   }}
@@ -103,11 +126,16 @@ const TaskModal = () => {
           </Stack>
         </Form>
       ),
+      errors: errors,
     });
   };
-  const handleSubmit = async (data) => {
-    const task = await createTask(data.data).unwrap();
-    dispatch(addTodo({ ...task }));
+  const handleSubmitt = async (data) => {
+    try {
+      const task = await createTask(data.data).unwrap();
+      dispatch(addTodo({ ...task }));
+    } catch (err) {
+      console.log(err);
+    }
     reset();
     closeModal();
   };

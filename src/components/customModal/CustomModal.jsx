@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ModalContext from "contexts/ModalContext";
-import { Modal } from "@mui/material";
+import { Button, Modal } from "@mui/material";
 import { Box } from "@mui/material";
 const style = {
   position: "absolute",
@@ -18,9 +18,14 @@ const style = {
 };
 
 const CustomModal = (props) => {
-  const { children, title, open } = props;
+  const { children, title, open, errors } = props;
   const { closeModal } = useContext(ModalContext);
-
+  const [test, setTest] = useState(false);
+  const handle = () => {
+    console.log(test);
+    setTest((prev) => !prev);
+  };
+  console.log(errors);
   return (
     <Modal
       onClose={closeModal}
@@ -31,6 +36,7 @@ const CustomModal = (props) => {
       <Box sx={style}>
         {title}
         {children}
+        <Button onClick={handle}>ffff</Button>
       </Box>
     </Modal>
   );

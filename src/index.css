@@ -1,22 +1,58 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   width: 10px;
-  
 }
 body::-webkit-scrollbar-thumb {
-
-  background-color: #6d696c;    /* цвет бегунка */
-  border-radius: 20px;       /* округлось бегунка */
-
+  background-color: #6d696c; /* цвет бегунка */
+  border-radius: 20px; /* округлось бегунка */
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+html {
+  --main-color: #e839ad;
+  --main-color-2: #302dd7;
+  --elem-outer-color: #706eda;
+  --rote-ref: #550862;
+  --button-color: #9b99e5;
+  --button-hover: #8683c9;
+  --task-color: transparent;
+  --categories-color: #9b99e5;
+  --input-color: #b7b5b5;
+  --input-error-color: #b80f0f;
+  --page-loader-color: #2e2e2e;
+  --main-page-color: #2e2e2e;
+  --task-text-color: white;
+  --subtask-border-color: #b0b0b0;
+  --task-border: 1px white solid;
+}
+html[data-theme="Dark"] {
+  --page-loader-color: #2e2e2e;
+  --main-page-color: #2e2e2e;
+  --task-text-color: white;
+  --subtask-border-color: #b0b0b0;
+  --task-border: 1px white solid;
+  --task-color: transparent;
+  --categories-color: #9b99e5;
+}
+html[data-theme="Green"] {
+  --task-color: #62d2a2;
+  --task-text-color: #0c4a2f;
+  --task-border: 1px #0c4a2f solid;
+  --subtask-border-color: #0c4a2f;
+  --categories-color: #62d2a2;
+}
+html[data-theme="Purple"] {
+  --task-color: #b693fe;
+  --task-text-color: #4f044c;
+  --task-border: 1px #670769 solid;
+  --subtask-border-color: #4f044c;
+  --categories-color: #b693fe;
 }
