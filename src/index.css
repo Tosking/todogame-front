@@ -49,6 +49,20 @@ html[data-theme="Green"] {
   --subtask-border-color: #0c4a2f;
   --categories-color: #62d2a2;
 }
+html[data-theme="Pink"] {
+  --task-color: #fa8dda;
+  --task-text-color: #670769;
+  --task-border: 1px #670769 solid;
+  --subtask-border-color: #670769;
+  --categories-color: #fa8dda;
+}
+html[data-theme="Blue"] {
+  --task-color: #00bfff;
+  --task-text-color: #c8e0f4;
+  --task-border: 1px #c8e0f4 solid;
+  --subtask-border-color: #c8e0f4;
+  --categories-color: #00bfff;
+}
 html[data-theme="Purple"] {
   --task-color: #b693fe;
   --task-text-color: #4f044c;

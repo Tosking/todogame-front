@@ -1,5 +1,5 @@
 import ModalContext from "contexts/ModalContext";
-import React, { useId, useContext, useState, createRef } from "react";
+import React, { useId, useContext } from "react";
 
 import { Typography, Box, Stack, MenuItem, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -14,7 +14,6 @@ import { useAddTodoMutation } from "store/slice/todos/todosSlice";
 import { getCategories } from "store/slice/category";
 import CustomButton from "components/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { ErrorMessage } from "@hookform/error-message";
 const useStyles = makeStyles((theme) => ({
   menuPaper: {
     maxHeight: 200,

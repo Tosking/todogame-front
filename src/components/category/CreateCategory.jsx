@@ -13,8 +13,8 @@ import Category from "./Category";
 import { ReactComponent as AddCategory } from "images/addcategory.svg";
 import { useForm } from "react-hook-form";
 import { useCreateCategoryMutation } from "store/slice/category/categorySlice";
-import { useDispatch, useSelector } from "react-redux";
-import { createCategory as create, getCategory } from "store/slice/category";
+import { useDispatch } from "react-redux";
+import { createCategory as create } from "store/slice/category";
 
 import ModalContext from "contexts/ModalContext";
 
