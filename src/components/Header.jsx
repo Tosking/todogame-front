@@ -3,7 +3,7 @@ import "styleComponents/Header.css";
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-import "react-dropdown/style.css";
+
 import arrowBurger from "images/arrowBurger.svg";
 import signin from "images/signin.svg";
 import headericon from "images/headericon.svg";
