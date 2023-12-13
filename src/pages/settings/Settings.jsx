@@ -4,14 +4,7 @@ import Header from "components/Header";
 import edit from "images/edit.svg";
 import "styleComponents/Settings.css";
 import MainContent from "components/Maincontent";
-import {
-  Button,
-  Modal,
-  Box,
-  Typography,
-  TextField,
-  Stack,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 import CustomButton from "components/Button";
 import ModalContext from "contexts/ModalContext";
 import ChangeEmail from "./ChangeEmail";
@@ -19,8 +12,8 @@ import { useForm } from "react-hook-form";
 import ChangePassword from "./ChangePassword";
 import EditName from "./EditName";
 const Settings = () => {
-  const { openModal, closeModal } = useContext(ModalContext);
-  const { control, register, reset } = useForm();
+  const { openModal } = useContext(ModalContext);
+  const { control, register } = useForm();
 
   const changeEmail = () => {
     openModal({

@@ -15,7 +15,7 @@ import "normalize.css";
 import "null.css";
 import NotFoundPage from "pages/NotFoundPage";
 import PublicRoute from "utils/router/publicRouter";
-import ModalContextProvider from "contexts/ModalContextProvider";
+
 const App = () => {
   return (
     <div className="App">

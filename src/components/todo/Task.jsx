@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { Checkbox } from "pretty-checkbox-react";
 import "pretty-checkbox/dist/pretty-checkbox.css";
 import "styleComponents/Subtask.css";
@@ -16,11 +16,9 @@ const btnStyle = {
 };
 const Task = ({ children, title, idTask }) => {
   const [open, setOpen] = useState(false);
-  const [checked, setChecked] = useState(false);
-  const onChange = useCallback(() => {
-    setChecked((prev) => !prev);
-  }, []);
-  const [deleteTask, isLoading] = useRemoveTodoMutation();
+  // const [checked, setChecked] = useState(false);
+
+  const [deleteTask] = useRemoveTodoMutation();
   const dispatch = useDispatch();
   const setVisibleInfoTask = () => {
     setOpen((value) => !value);

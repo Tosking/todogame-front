@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TaskModal = () => {
   const classes = useStyles();
-  const { openModal, closeModal, updateModal } = useContext(ModalContext);
+  const { openModal, closeModal } = useContext(ModalContext);
   const categories = useSelector(getCategories);
   const categoryID = useId();
   const {
@@ -33,7 +33,7 @@ const TaskModal = () => {
     handleSubmit,
   } = useForm({ mode: "onChange" });
   const dispatch = useDispatch();
-  const [createTask, { isLoading: isLoadingCreateTask }] = useAddTodoMutation();
+  const [createTask] = useAddTodoMutation();
   console.log(errors);
   const handleOpen = () => {
     openModal({

@@ -1,9 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
-  Box,
   Button,
   FormControl,
-  Modal,
   Stack,
   TextField,
   Typography,
@@ -22,7 +20,7 @@ const CreateCategory = () => {
   const { openModal, closeModal } = useContext(ModalContext);
   const dispatch = useDispatch();
   const { control, register, reset } = useForm();
-  const [createCategory, isLoading] = useCreateCategoryMutation();
+  const [createCategory] = useCreateCategoryMutation();
 
   const handleOpen = () => {
     openModal({

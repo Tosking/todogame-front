@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 const useTheme = () => {
   const [theme, setTheme] = useState(
