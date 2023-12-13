@@ -12,6 +12,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{matrix.node-version}}
+      - name: legacy-peer config
+        run: npm config set legacy-peer-deps true
       - name: install modules
         run: npm install
       - name: build project
