@@ -14,7 +14,6 @@ import EditName from "./EditName";
 const Settings = () => {
   const { openModal } = useContext(ModalContext);
   const { control, register } = useForm();
-
   const changeEmail = () => {
     openModal({
       title: <Typography>Change Email</Typography>,
