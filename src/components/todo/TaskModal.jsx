@@ -50,7 +50,7 @@ const TaskModal = () => {
         </>
       ),
       children: (
-        <Form control={control} onSubmit={handleSubmit(handleSubmitt)}>
+        <Form control={control} onSubmit={handleSubmitt}>
           <Stack spacing={3}>
             <FormControl>
               <TextField
